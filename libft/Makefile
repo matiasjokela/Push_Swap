@@ -39,7 +39,7 @@ O_FILES = $(LIBFT_FILES:.c=.o) get_next_line.o  $(PRINTF_FILES:.c=.o)
 all: $(NAME)
 
 $(NAME):
-	@gcc -c -Wall -Werror -Wextra $(HEADER) $(SRCS);
+	@gcc -c -Wall -Werror -Wextra -g -fsanitize=address $(HEADER) $(SRCS);
 	@ar rc $(NAME) $(O_FILES);
 	@ranlib $(NAME);
 
