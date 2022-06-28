@@ -21,5 +21,7 @@ typedef struct s_stack
 	struct s_stack	*next;
 }					t_stack;
 
+void	print_error(void);
+
 
 #endif

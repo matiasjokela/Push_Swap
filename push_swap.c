@@ -3,9 +3,11 @@
 #include "includes/push_swap.h"
 #include <stdio.h>
 
+
 int main(int argc, char **argv)
 {
-
-	printf("argc: %d, argv: %s\n", argc, argv[1]);
+	(void)argc;
+	(void)argv;
+	print_error();
 	return (0);
 }
