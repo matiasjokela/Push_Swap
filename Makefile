@@ -1,7 +1,14 @@
-
-
-
-
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: mjokela <marvin@42.fr>                     +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/06/21 15:09:43 by mjokela           #+#    #+#              #
+#    Updated: 2022/06/21 15:09:51 by mjokela          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
 NAME = libpush_swap.a
 SRC_DIR = ./srcs/
@@ -34,6 +41,6 @@ clean:
 fclean:
 	@cd ./libft/ && $(MAKE) fclean && cd ..;
 	@cd ./srcs/ && rm -f $(O_FILES) && cd ..;
-	@rm -f $(NAME) ./includes/push_swap.h.gch;
+	@rm -f $(NAME) ./includes/push_swap.h.gch checker push_swap;
 
 re: fclean all
