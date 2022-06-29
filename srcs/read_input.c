@@ -11,8 +11,13 @@ void	read_input(t_stack *stack_a, int argc, char **argv, t_flags *flags)
 	tmp = stack_a;
 	if (argc > 2)
 		check_flags(argv, flags, &i);
-	while (i < argc)
+	while (i < argc - 1)
+	{
 		read_values(stack_a, argv[i++]);
+		stack_a->next = new_node(0);
+		stack_a = stack_a->next;
+	}
+	read_values(stack_a, argv[i++]);
 	stack_a = tmp;
 }
 
