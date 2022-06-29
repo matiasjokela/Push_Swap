@@ -21,7 +21,19 @@ typedef struct s_stack
 	struct s_stack	*next;
 }					t_stack;
 
-void	print_error(void);
+typedef struct s_flags
+{
+	int		v_flag;
+	int		c_flag;
+}					t_flags;
+
+void		print_error(void);
+void		init_flags(t_flags *flags);
+t_stack		*new_node(int nbr);
+void		read_input(t_stack *stack_a, int argc, char **argv, t_flags *flags);
+void		check_flags(char **argv, t_flags *flags, int *i);
+void		read_values(t_stack *stack_a, char *str);
+long long	ps_atoi(char *str, int *i);
 
 
 #endif
