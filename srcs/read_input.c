@@ -21,13 +21,8 @@ void	read_input(t_stack *stack_a, int argc, char **argv, t_flags *flags)
 	tmp = stack_a;
 	if (argc > 2)
 		check_flags(argv, flags, &i);
-	while (i < argc - 1)
-	{
-		read_values(stack_a, argv[i++]);
-		stack_a->next = new_node(0);
-		stack_a = stack_a->next;
-	}
-	read_values(stack_a, argv[i]);
+	while (i < argc)
+		read_values(&stack_a, argv[i++]);
 	stack_a = tmp;
 }
 
@@ -45,7 +40,7 @@ void	check_flags(char **argv, t_flags *flags, int *i)
 	}
 }
 
-void	read_values(t_stack *stack_a, char *str)
+void	read_values(t_stack **stack_a, char *str)
 {
 	int			i;
 	long long	value;
@@ -57,9 +52,9 @@ void	read_values(t_stack *stack_a, char *str)
 		value = ps_atoi(str, &i);
 		if (value < -2147483648 || value > 2147483647)
 			print_error();
-		stack_a->value = value;
-		stack_a->next = new_node(0);
-		stack_a = stack_a->next;
+		(*stack_a)->value = value;
+		(*stack_a)->next = new_node(0);
+		*stack_a = (*stack_a)->next;
 	}
 }
 

@@ -32,9 +32,11 @@ void		init_flags(t_flags *flags);
 t_stack		*new_node(int nbr);
 void		read_input(t_stack *stack_a, int argc, char **argv, t_flags *flags);
 void		check_flags(char **argv, t_flags *flags, int *i);
-void		read_values(t_stack *stack_a, char *str);
+void		read_values(t_stack **stack_a, char *str);
 long long	ps_atoi(char *str, int *i);
 void		print_stacks(t_stack *a, t_stack *b);
+void		swap(t_stack *stack);
+void		push(t_stack **src, t_stack **dst);
 
 
 #endif

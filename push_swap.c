@@ -29,6 +29,8 @@ int		main(int argc, char **argv)
 	init_flags(flags);
 	read_input(stack_a, argc, argv, flags);
 	print_stacks(stack_a, stack_b);
+	/*push(&stack_a, &stack_b);
+	print_stacks(stack_a, stack_b);*/
 
 
 
