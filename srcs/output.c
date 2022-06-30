@@ -24,7 +24,7 @@ void	print_stacks(t_stack *a, t_stack *b)
 		}
 		if (b->next != NULL)
 		{
-			ft_printf("%12d", a->value);
+			ft_printf("%12d", b->value);
 			b = b->next;
 		}
 		ft_printf("\n");
