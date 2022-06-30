@@ -22,18 +22,14 @@ int		main(int argc, char **argv)
 	if (argc == 1)
 		return (1);
 	stack_a = new_node(0);
-	stack_b = NULL;
+	stack_b = new_node(0);
 	flags = (t_flags *)malloc(sizeof(t_flags));
 	if (flags == NULL)
 		return (1);
 	init_flags(flags);
 	read_input(stack_a, argc, argv, flags);
-	(void)stack_b;
-	while (stack_a->next != NULL)
-	{
-		ft_printf("%d\n", stack_a->value);
-		stack_a = stack_a->next;
-	}
+	print_stacks(stack_a, stack_b);
+
 
 
 	

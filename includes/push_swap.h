@@ -34,6 +34,7 @@ void		read_input(t_stack *stack_a, int argc, char **argv, t_flags *flags);
 void		check_flags(char **argv, t_flags *flags, int *i);
 void		read_values(t_stack *stack_a, char *str);
 long long	ps_atoi(char *str, int *i);
+void		print_stacks(t_stack *a, t_stack *b);
 
 
 #endif

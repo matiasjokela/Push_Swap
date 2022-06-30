@@ -1,4 +1,14 @@
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   read_input.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mjokela <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/30 14:45:04 by mjokela           #+#    #+#             */
+/*   Updated: 2022/06/30 14:45:17 by mjokela          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
@@ -17,7 +27,7 @@ void	read_input(t_stack *stack_a, int argc, char **argv, t_flags *flags)
 		stack_a->next = new_node(0);
 		stack_a = stack_a->next;
 	}
-	read_values(stack_a, argv[i++]);
+	read_values(stack_a, argv[i]);
 	stack_a = tmp;
 }
 
