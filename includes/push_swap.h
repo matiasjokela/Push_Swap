@@ -37,6 +37,8 @@ long long	ps_atoi(char *str, int *i);
 void		print_stacks(t_stack *a, t_stack *b);
 void		swap(t_stack *stack);
 void		push(t_stack **src, t_stack **dst);
+void		rotate(t_stack **stack);
+void		rev_rotate(t_stack **stack);
 
 
 #endif

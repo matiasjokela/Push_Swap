@@ -29,10 +29,14 @@ int		main(int argc, char **argv)
 	init_flags(flags);
 	read_input(stack_a, argc, argv, flags);
 	print_stacks(stack_a, stack_b);
-	push(&stack_a, &stack_b);
-	print_stacks(stack_a, stack_b);
-	push(&stack_a, &stack_b);
-	print_stacks(stack_a, stack_b);
+	for (int i = 0; i < 10; i++)
+	{
+		rev_rotate(&stack_a);
+		print_stacks(stack_a, stack_b);
+		sleep(1);
+	}
+
+
 
 
 

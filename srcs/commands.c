@@ -34,3 +34,35 @@ void	push(t_stack **src, t_stack **dst)
 	*dst = *src;
 	*src = tmp;
 }
+
+void	rotate(t_stack **stack)
+{
+	t_stack	*tmp;
+	t_stack	*head;
+
+	if ((*stack)->next == NULL || (*stack)->next->next == NULL)
+		return ;
+	tmp = (*stack);
+	head = (*stack)->next;
+	while ((*stack)->next->next != NULL)
+		*stack = (*stack)->next;
+	tmp->next = (*stack)->next;
+	(*stack)->next = tmp;
+	(*stack) = head;
+}
+
+void	rev_rotate(t_stack **stack)
+{
+	t_stack	*tmp;
+	t_stack *head;
+
+	if ((*stack)->next == NULL || (*stack)->next->next == NULL)
+		return ;
+	tmp = *stack;
+	while ((*stack)->next->next->next != NULL)
+		*stack = (*stack)->next;
+	head = (*stack)->next;
+	(*stack)->next = head->next;
+	head->next = tmp;
+	(*stack) = head;
+}
