@@ -4,42 +4,33 @@
 
 void	solve_stacks(t_stack **a, t_stack **b, t_psdata *data)
 {
-	int	tmp;
+	int	min;
 
 	if (is_sorted(*a, *b))
 		return ;
-	push(a, b);
-	data->stack_depht_b++;
-	data->stack_depth_a--;
-	push(a, b);
-	data->stack_depht_b++;
-	data->stack_depth_a--;
+	ft_printf("move count: %d\n", data->stack_depth_b);
 	while ((*a)->next != NULL)
 	{
-		tmp = data->stack_depht_b;
-		while ((*a)->value <= (*b)->value && tmp >= 0)
+		min = find_min((*a));
+		while ((*a)->value != min)
 		{
-			rotate(b);
-			tmp--;
-			print_stacks(*a, *b);
-			sleep(1);
+			rotate(a);
+			data->stack_depth_b++;
 		}
+
 		push(a, b);
-		data->stack_depht_b++;
-		data->stack_depth_a--;
+		data->stack_depth_b++;
 	}
-	if ((*b)->value < (*b)->next->value)
-		swap(*b);
-	print_stacks(*a, *b);
+	
+
 
 	
 	while ((*b)->next != NULL)
 	{
 		push(b, a);
-		data->stack_depht_b--;
-		data->stack_depth_a++;
+		data->stack_depth_b++;
 	}
-
+	ft_printf("move count: %d\n", data->stack_depth_b);
 }
 
 int	is_sorted(t_stack *a, t_stack *b)
@@ -58,4 +49,18 @@ int	is_sorted(t_stack *a, t_stack *b)
 			return (0);
 	}
 	return (1);
+}
+
+int	find_min(t_stack *a)
+{
+	int	min;
+
+	min = a->value;
+	while (a->next != NULL)
+	{
+		if (a->value < min)
+			min = a->value;
+		a = a->next;
+	}
+	return (min);
 }
