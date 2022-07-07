@@ -15,26 +15,28 @@
 
 int		main(int argc, char **argv)
 {
-	t_stack	*stack_a;
-	t_stack	*stack_b;
-	t_flags	*flags;
+	t_stack		*stack_a;
+	t_stack		*stack_b;
+	t_psdata	*data;
 
 	if (argc == 1)
 		return (1);
 	stack_a = new_node(0);
 	stack_b = new_node(0);
-	flags = (t_flags *)malloc(sizeof(t_flags));
-	if (flags == NULL)
+	data = (t_psdata *)malloc(sizeof(t_psdata));
+	if (data == NULL)
 		return (1);
-	init_flags(flags);
-	read_input(stack_a, argc, argv, flags);
+	init_data(data);
+	read_input(stack_a, argc, argv, data);
 	print_stacks(stack_a, stack_b);
-	for (int i = 0; i < 10; i++)
-	{
-		rev_rotate(&stack_a);
-		print_stacks(stack_a, stack_b);
-		sleep(1);
-	}
+	solve_stacks(&stack_a, &stack_b, data);
+	print_stacks(stack_a, stack_b);
+	// for (int i = 0; i < 10; i++)
+	// {
+	// 	rev_rotate(&stack_a);
+	// 	print_stacks(stack_a, stack_b);
+	// 	sleep(1);
+	// }
 
 
 
@@ -45,10 +47,12 @@ int		main(int argc, char **argv)
 	
 }
 
-void	init_flags(t_flags *flags)
+void	init_data(t_psdata *data)
 {
-	flags->v_flag = 0;
-	flags->c_flag = 0;
+	data->v_flag = 0;
+	data->c_flag = 0;
+	data->stack_depth_a = 0;
+	data->stack_depht_b = 0;
 }
 
 t_stack	*new_node(int nbr)

@@ -27,7 +27,7 @@ void	push(t_stack **src, t_stack **dst)
 {
 	t_stack	*tmp;
 
-	if ((*src)->next == NULL || (*src)->next->next == NULL)
+	if ((*src)->next == NULL)
 		return ;
 	tmp = (*src)->next;
 	(*src)->next = *dst;

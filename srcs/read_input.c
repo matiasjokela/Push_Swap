@@ -12,7 +12,7 @@
 
 #include "../includes/push_swap.h"
 
-void	read_input(t_stack *stack_a, int argc, char **argv, t_flags *flags)
+void	read_input(t_stack *stack_a, int argc, char **argv, t_psdata *data)
 {
 	int		i;
 	t_stack	*tmp;
@@ -20,27 +20,27 @@ void	read_input(t_stack *stack_a, int argc, char **argv, t_flags *flags)
 	i = 1;
 	tmp = stack_a;
 	if (argc > 2)
-		check_flags(argv, flags, &i);
+		check_flags(argv, data, &i);
 	while (i < argc)
-		read_values(&stack_a, argv[i++]);
+		read_values(&stack_a, argv[i++], data);
 	stack_a = tmp;
 }
 
-void	check_flags(char **argv, t_flags *flags, int *i)
+void	check_flags(char **argv, t_psdata *data, int *i)
 {
 	if (ft_strcmp(argv[1], "-v") == 0)
 	{
-		flags->v_flag = 1;
+		data->v_flag = 1;
 		*i = 2;
 	}
 	else if (ft_strcmp(argv[1], "-c") == 0)
 	{
-		flags->c_flag = 1;
+		data->c_flag = 1;
 		*i = 2;
 	}
 }
 
-void	read_values(t_stack **stack_a, char *str)
+void	read_values(t_stack **stack_a, char *str, t_psdata *data)
 {
 	int			i;
 	long long	value;
@@ -55,6 +55,7 @@ void	read_values(t_stack **stack_a, char *str)
 		(*stack_a)->value = value;
 		(*stack_a)->next = new_node(0);
 		*stack_a = (*stack_a)->next;
+		data->stack_depth_a += 1;
 	}
 }
 

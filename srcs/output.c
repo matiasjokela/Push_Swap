@@ -22,11 +22,15 @@ void	print_stacks(t_stack *a, t_stack *b)
 			ft_printf("%12d", a->value);
 			a = a->next;
 		}
+		else
+			ft_printf("%12c", ' ');
 		if (b->next != NULL)
 		{
 			ft_printf("%12d", b->value);
 			b = b->next;
 		}
+		else
+			ft_printf("%12c", ' ');
 		ft_printf("\n");
 	}
 	ft_printf("\n           A           B\n");
