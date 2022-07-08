@@ -48,7 +48,7 @@ void		push(t_stack **src, t_stack **dst);
 void		rotate(t_stack **stack);
 void		rev_rotate(t_stack **stack);
 void		solve_stacks(t_stack **a, t_stack **b, t_psdata *data);
-int			is_sorted(t_stack *a, t_stack *b);
+int			is_sorted(t_stack *stack);
 void		minimax(t_stack *a, t_psdata *data);
 void		sa(t_stack *a, t_stack *b, t_psdata *data);
 void		sb(t_stack *a, t_stack *b, t_psdata *data);
@@ -61,6 +61,7 @@ void		rr(t_stack **a, t_stack **b, t_psdata *data);
 void		rra(t_stack **a, t_stack **b, t_psdata *data);
 void		rrb(t_stack **a, t_stack **b, t_psdata *data);
 void		rrr(t_stack **a, t_stack **b, t_psdata *data);
+void		bubble_sort(t_stack **a, t_stack **b, t_psdata *data);
 
 
 #endif
