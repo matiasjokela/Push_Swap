@@ -49,16 +49,16 @@ void		rev_rotate(t_stack **stack);
 void		solve_stacks(t_stack **a, t_stack **b, t_psdata *data);
 int			is_sorted(t_stack *a, t_stack *b);
 void		minimax(t_stack *a, t_psdata *data);
-void		sa(t_stack *a, t_psdata *data);
-void		sb(t_stack *b, t_psdata *data);
+void		sa(t_stack *a, t_stack *b, t_psdata *data);
+void		sb(t_stack *a, t_stack *b, t_psdata *data);
 void		ss(t_stack *a, t_stack *b, t_psdata *data);
 void		pa(t_stack **a, t_stack **b, t_psdata *data);
 void		pb(t_stack **a, t_stack **b, t_psdata *data);
-void		ra(t_stack **a, t_psdata *data);
-void		rb(t_stack **b, t_psdata *data);
+void		ra(t_stack **a, t_stack **b, t_psdata *data);
+void		rb(t_stack **a, t_stack **b, t_psdata *data);
 void		rr(t_stack **a, t_stack **b, t_psdata *data);
-void		rra(t_stack **a, t_psdata *data);
-void		rrb(t_stack **b, t_psdata *data);
+void		rra(t_stack **a, t_stack **b, t_psdata *data);
+void		rrb(t_stack **a, t_stack **b, t_psdata *data);
 void		rrr(t_stack **a, t_stack **b, t_psdata *data);
 
 

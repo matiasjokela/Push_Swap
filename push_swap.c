@@ -31,12 +31,7 @@ int		main(int argc, char **argv)
 	print_stacks(stack_a, stack_b);
 	solve_stacks(&stack_a, &stack_b, data);
 	print_stacks(stack_a, stack_b);
-	// for (int i = 0; i < 10; i++)
-	// {
-	// 	rev_rotate(&stack_a);
-	// 	print_stacks(stack_a, stack_b);
-	// 	sleep(1);
-	// }
+	
 
 
 

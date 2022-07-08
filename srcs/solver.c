@@ -14,9 +14,9 @@ void	solve_stacks(t_stack **a, t_stack **b, t_psdata *data)
 		while ((*a)->value != data->a_min)
 		{
 			if ((data->d_to_min * 2) < data->stack_depth_a)
-				ra(a, data);
+				ra(a, b, data);
 			else
-				rra(a, data);
+				rra(a, b, data);
 		}
 		pb(a, b, data);
 	}
