@@ -14,26 +14,18 @@ void	solve_stacks(t_stack **a, t_stack **b, t_psdata *data)
 		while ((*a)->value != data->a_min)
 		{
 			if ((data->d_to_min * 2) < data->stack_depth_a)
-				rotate(a);
+				ra(a, data);
 			else
-				rev_rotate(a);
-			data->move_count++;
+				rra(a, data);
 		}
-		push(a, b);
-		data->move_count++;
-		data->stack_depth_a--;
-		data->stack_depth_b++;
+		pb(a, b, data);
 	}
 	
 
 
 	
 	while ((*b)->next != NULL)
-	{
-		push(b, a);
-		data->stack_depth_b--;
-		data->stack_depth_a++;
-	}
+		pa(a, b, data);
 	ft_printf("move count: %d\n", data->move_count);
 }
 
