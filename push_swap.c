@@ -53,6 +53,7 @@ void	init_data(t_psdata *data)
 	data->c_flag = 0;
 	data->stack_depth_a = 0;
 	data->stack_depth_b = 0;
+	data->move_count = 0;
 }
 
 t_stack	*new_node(int nbr)

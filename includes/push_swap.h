@@ -27,6 +27,11 @@ typedef struct s_psdata
 	int	c_flag;
 	int	stack_depth_a;
 	int	stack_depth_b;
+	int	a_min;
+	int	d_to_min;
+	int	a_max;
+	int	d_to_max;
+	int move_count;
 }		t_psdata;
 
 void		print_error(void);
@@ -43,7 +48,7 @@ void		rotate(t_stack **stack);
 void		rev_rotate(t_stack **stack);
 void		solve_stacks(t_stack **a, t_stack **b, t_psdata *data);
 int			is_sorted(t_stack *a, t_stack *b);
-int			find_min(t_stack *a);
+void		minimax(t_stack *a, t_psdata *data);
 
 
 #endif
