@@ -41,6 +41,7 @@ void		read_input(t_stack *stack_a, int argc, char **argv, t_psdata *data);
 void		check_flags(char **argv, t_psdata *data, int *i);
 void		read_values(t_stack **stack_a, char *str, t_psdata *data);
 long long	ps_atoi(char *str, int *i);
+void		check_duplicates(t_stack *a);
 void		print_stacks(t_stack *a, t_stack *b);
 void		swap(t_stack *stack);
 void		push(t_stack **src, t_stack **dst);

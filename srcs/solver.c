@@ -39,8 +39,6 @@ int	is_sorted(t_stack *a, t_stack *b)
 	{
 		tmp = a->value;
 		a = a->next;
-		if (tmp == a->value)
-			print_error();
 		if (tmp > a->value)
 			return (0);
 	}

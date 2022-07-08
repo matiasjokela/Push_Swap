@@ -33,12 +33,6 @@ int		main(int argc, char **argv)
 	print_stacks(stack_a, stack_b);
 	
 
-
-
-
-
-	
-	// Check duplicates from sorted array
 	
 }
 
