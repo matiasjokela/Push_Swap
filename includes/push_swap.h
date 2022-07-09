@@ -23,16 +23,20 @@ typedef struct s_stack
 
 typedef struct s_psdata
 {
-	int	v_flag;
-	int	c_flag;
-	int	stack_depth_a;
-	int	stack_depth_b;
-	int	a_min;
-	int	d_to_min;
-	int	a_max;
-	int	d_to_max;
-	int	b_floor;
-	int move_count;
+	int		v_flag;
+	int		c_flag;
+	int		stack_depth_a;
+	int		stack_depth_b;
+	int		a_min;
+	int		d_to_min;
+	int		a_max;
+	int		d_to_max;
+	int		b_floor;
+	int		rot_dir;
+	int		rot_needed;
+	char	min_or_max;
+	int		global_max;
+	int		move_count;
 }		t_psdata;
 
 void		print_error(void);
@@ -63,6 +67,9 @@ void		rra(t_stack **a, t_stack **b, t_psdata *data);
 void		rrb(t_stack **a, t_stack **b, t_psdata *data);
 void		rrr(t_stack **a, t_stack **b, t_psdata *data);
 void		bubble_sort(t_stack **a, t_stack **b, t_psdata *data);
+void		push_next(t_stack **a, t_stack **b, t_psdata *data);
+void		push_min(t_stack **a, t_stack **b, t_psdata *data);
+void		push_max(t_stack **a, t_stack **b, t_psdata *data);
 
 
 #endif

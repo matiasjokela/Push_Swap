@@ -9,22 +9,16 @@ void	solve_stacks(t_stack **a, t_stack **b, t_psdata *data)
 		return ;
 	ft_printf("node count: %d\n", data->stack_depth_a);
 	//bubble_sort(a, b, data);
+	minimax((*a), data);
+	data->global_max = data->a_max;
+	push_min(a, b, data);
 	while ((*a)->next != NULL)
 	{
 		minimax((*a), data);
-		while ((*a)->value != data->a_min)
-		{
-			if ((data->d_to_min * 2) < data->stack_depth_a)
-				ra(a, b, data);
-			else
-				rra(a, b, data);
-		}
-		pb(a, b, data);
+		push_next(a, b, data);
 	}
-	
-
-
-	
+	while ((*b)->value != data->global_max)
+		rb(a, b, data);	
 	while ((*b)->next != NULL)
 		pa(a, b, data);
 	ft_printf("move count: %d\n", data->move_count);
@@ -87,4 +81,65 @@ void	bubble_sort(t_stack **a, t_stack **b, t_psdata *data)
 			i = 0;
 		}
 	}
+}
+
+void	push_next(t_stack **a, t_stack **b, t_psdata *data)
+{
+	data->rot_dir = 1;
+	data->rot_needed = data->d_to_min;
+	data->min_or_max = 'm';
+	if (data->stack_depth_a - data->d_to_min < data->rot_needed)
+	{
+		data->rot_dir = 2;
+		data->rot_needed = data->stack_depth_a - data->d_to_min;
+	}
+	if (data->d_to_max < data->rot_needed)
+	{
+		data->rot_dir = 1;
+		data->rot_needed = data->d_to_max;
+		data->min_or_max = 'M';
+	}
+	if (data->stack_depth_a - data->d_to_max < data->rot_needed)
+	{
+		data->rot_dir = 2;
+		data->min_or_max = 'M';
+	}
+	if (data->min_or_max == 'm')
+		push_min(a, b, data);
+	else
+		push_max(a, b, data);
+}
+
+void	push_min(t_stack **a, t_stack **b, t_psdata *data)
+{
+	while ((*a)->value != data->a_min)
+	{
+		if (data->rot_dir == 1)
+			ra(a, b, data);
+		else
+			rra(a, b, data);
+	}
+	if (data->stack_depth_b == 0)
+		pb(a, b, data);
+	else
+	{
+		while ((*b)->value != data->b_floor)
+			rb(a, b, data);
+		pb(a, b, data);
+	}
+	data->b_floor = data->a_min;
+}
+
+void	push_max(t_stack **a, t_stack **b, t_psdata *data)
+{
+	while ((*a)->value != data->a_max)
+	{
+		if (data->rot_dir == 1)
+			ra(a, b, data);
+		else
+			rra(a, b, data);
+	}
+	while ((*b)->value != data->b_floor)
+		rb(a, b, data);
+	pb(a, b, data);
 }
