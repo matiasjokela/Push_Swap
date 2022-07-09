@@ -31,6 +31,7 @@ typedef struct s_psdata
 	int	d_to_min;
 	int	a_max;
 	int	d_to_max;
+	int	b_floor;
 	int move_count;
 }		t_psdata;
 

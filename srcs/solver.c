@@ -7,26 +7,26 @@ void	solve_stacks(t_stack **a, t_stack **b, t_psdata *data)
 
 	if (is_sorted(*a))
 		return ;
-	ft_printf("move count: %d\n", data->move_count);
-	bubble_sort(a, b, data);
-	// while ((*a)->next != NULL)
-	// {
-	// 	minimax((*a), data);
-	// 	while ((*a)->value != data->a_min)
-	// 	{
-	// 		if ((data->d_to_min * 2) < data->stack_depth_a)
-	// 			ra(a, b, data);
-	// 		else
-	// 			rra(a, b, data);
-	// 	}
-	// 	pb(a, b, data);
-	// }
+	ft_printf("node count: %d\n", data->stack_depth_a);
+	//bubble_sort(a, b, data);
+	while ((*a)->next != NULL)
+	{
+		minimax((*a), data);
+		while ((*a)->value != data->a_min)
+		{
+			if ((data->d_to_min * 2) < data->stack_depth_a)
+				ra(a, b, data);
+			else
+				rra(a, b, data);
+		}
+		pb(a, b, data);
+	}
 	
 
 
 	
-	// while ((*b)->next != NULL)
-	// 	pa(a, b, data);
+	while ((*b)->next != NULL)
+		pa(a, b, data);
 	ft_printf("move count: %d\n", data->move_count);
 }
 
