@@ -25,6 +25,7 @@ void	read_input(t_stack *stack_a, int argc, char **argv, t_psdata *data)
 		read_values(&stack_a, argv[i++], data);
 	stack_a = tmp;
 	check_duplicates(stack_a);
+	get_segments(stack_a, data);
 }
 
 void	check_flags(char **argv, t_psdata *data, int *i)
@@ -108,5 +109,35 @@ void	check_duplicates(t_stack *a)
 		}
 		current = current->next;
 		tmp = a;
+	}
+}
+
+void	get_segments(t_stack *stack_a, t_psdata *data)
+{
+	t_stack	*tmp;
+	int		min;
+	int		marked;
+
+	marked = 0;
+	while (marked < data->stack_depth_a)
+	{
+		tmp = stack_a;
+		min = 2147483647;
+		while (tmp->next != NULL)
+		{
+			if (tmp->value < min && tmp->segment == -1)
+				min = tmp->value;
+			tmp = tmp->next;
+		}
+		tmp = stack_a;
+		while (tmp->value != min)
+			tmp = tmp->next;
+		if (marked < (data->stack_depth_a / 3))
+			tmp->segment = 1;
+		else if (marked < ((data->stack_depth_a / 3) * 2))
+			tmp->segment = 2;
+		else
+			tmp->segment = 3;
+		marked++;
 	}
 }

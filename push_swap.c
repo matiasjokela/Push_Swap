@@ -53,6 +53,7 @@ t_stack	*new_node(int nbr)
 	if (node == 0)
 		exit(1);
 	node->value = nbr;
+	node->segment = -1;
 	node->next = NULL;
 	return (node);
 }

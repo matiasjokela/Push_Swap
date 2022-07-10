@@ -18,6 +18,7 @@
 typedef struct s_stack
 {
 	int				value;
+	int				segment;
 	struct s_stack	*next;
 }					t_stack;
 
@@ -70,6 +71,7 @@ void		bubble_sort(t_stack **a, t_stack **b, t_psdata *data);
 void		push_next(t_stack **a, t_stack **b, t_psdata *data);
 void		push_min(t_stack **a, t_stack **b, t_psdata *data);
 void		push_max(t_stack **a, t_stack **b, t_psdata *data);
+void		get_segments(t_stack *stack_a, t_psdata *data);
 
 
 #endif
