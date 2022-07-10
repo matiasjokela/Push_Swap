@@ -8,19 +8,19 @@ void	solve_stacks(t_stack **a, t_stack **b, t_psdata *data)
 	if (is_sorted(*a))
 		return ;
 	ft_printf("node count: %d\n", data->stack_depth_a);
-	//bubble_sort(a, b, data);
-	minimax((*a), data);
-	data->global_max = data->a_max;
-	push_min(a, b, data);
-	while ((*a)->next != NULL)
-	{
-		minimax((*a), data);
-		push_next(a, b, data);
-	}
-	while ((*b)->value != data->global_max)
-		rb(a, b, data);	
-	while ((*b)->next != NULL)
-		pa(a, b, data);
+	bubble_sort(a, b, data);
+	// minimax((*a), data);
+	// data->global_max = data->a_max;
+	// push_min(a, b, data);
+	// while ((*a)->next != NULL)
+	// {
+	// 	minimax((*a), data);
+	// 	push_next(a, b, data);
+	// }
+	// while ((*b)->value != data->global_max)
+	// 	rb(a, b, data);	
+	// while ((*b)->next != NULL)
+	// 	pa(a, b, data);
 	ft_printf("move count: %d\n", data->move_count);
 }
 
