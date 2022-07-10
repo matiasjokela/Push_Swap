@@ -13,8 +13,9 @@ void	solve_stacks(t_stack **a, t_stack **b, t_psdata *data)
 	bubble_sort(a, b, data);
 	//find_and_push(a, b, data);
 
+
 	while ((*b)->next != NULL)
-		find_and_push(a, b, data);
+		push_max_b(a, b, data);
 
 
 	// minimax((*a), data);
@@ -46,6 +47,41 @@ int	is_sorted(t_stack *stack)
 	return (1);
 }
 
+void	max_b(t_stack *b, t_psdata *data)
+{
+	int	i;
+
+	i = 0;
+	data->max_b = b->value;
+	data->d_to_max_b = data->stack_depth_b;
+	while (b->next != NULL)
+	{
+		if (b->value > data->max_b)
+		{
+			data->max_b = b->value;
+			data->d_to_max_b = i;
+		}
+		b = b->next;
+		i++;
+	}
+}
+
+void	push_max_b(t_stack **a, t_stack **b, t_psdata *data)
+{
+	max_b((*b), data);
+	data->rot_dir = 1;
+	data->rot_needed = data->d_to_max_b;
+	if (data->stack_depth_b - data->d_to_max_b < data->rot_needed)
+		data->rot_dir = 2;
+	while ((*b)->value != data->max_b)
+	{
+		if (data->rot_dir == 1)
+			rb(a, b, data);
+		else
+			rrb(a, b, data);
+	}
+	pa(a, b, data);
+}
 
 
 void	minimax(t_stack *a, t_psdata *data)
@@ -181,30 +217,4 @@ void	push_segments(t_stack **a, t_stack **b, t_psdata *data)
 		else
 			ra(a, b, data);
 	}
-}
-
-void	find_and_push(t_stack **a, t_stack **b, t_psdata *data)
-{
-	minimax((*a), data);
-	if ((*b)->value < (*a)->value)
-	{
-		if ((*b)->value < data->a_min)
-		{
-			while ((*a)->value != data->a_min)
-				rra(a, b, data);
-		}
-		else
-		{
-			while ((*a)->value > (*b)->value)
-				rra(a, b, data);
-			ra(a, b, data);
-		}
-	}
-	else
-	{
-		while ((*a)->value > (*b)->value)
-			ra(a, b, data);
-		rra(a, b, data);
-	}
-	pa(a, b, data);
 }

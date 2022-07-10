@@ -33,6 +33,8 @@ typedef struct s_psdata
 	int		a_max;
 	int		d_to_max;
 	int		b_floor;
+	int		max_b;
+	int		d_to_max_b;
 	int		rot_dir;
 	int		rot_needed;
 	char	min_or_max;
@@ -73,7 +75,8 @@ void		push_min(t_stack **a, t_stack **b, t_psdata *data);
 void		push_max(t_stack **a, t_stack **b, t_psdata *data);
 void		get_segments(t_stack *stack_a, t_psdata *data);
 void		push_segments(t_stack **a, t_stack **b, t_psdata *data);
-void		find_and_push(t_stack **a, t_stack **b, t_psdata *data);
+void		max_b(t_stack *a, t_psdata *data);
+void		push_max_b(t_stack **a, t_stack **b, t_psdata *data);
 
 
 #endif
