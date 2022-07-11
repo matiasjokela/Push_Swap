@@ -7,10 +7,17 @@ void	solve_stacks(t_stack **a, t_stack **b, t_psdata *data)
 
 	if (is_sorted(*a))
 		return ;
-	ft_printf("node count: %d\n", data->stack_depth_a);
-	// bubble_sort(a, b, data);
+	if (data->stack_depth_a < 6)
+	{
+		sort_small(a, b, data);
+		return ;
+	}
+
+
+
 	push_segments(a, b, data);
 	bubble_sort(a, b, data);
+
 	while ((*b)->next != NULL)
 		push_max_b(a, b, data);
 
@@ -26,8 +33,10 @@ void	solve_stacks(t_stack **a, t_stack **b, t_psdata *data)
 
 
 
-	ft_printf("move count: %d\n", data->move_count);
+	
 }
+
+
 
 int	is_sorted(t_stack *stack)
 {
@@ -128,11 +137,11 @@ void	bubble_sort(t_stack **a, t_stack **b, t_psdata *data)
 	{
 		if ((*a)->value > (*a)->next->value)
 			sa((*a), (*b), data);
-		rotate(a);
+		ra(a, b, data);
 		i++;
 		if (i == data->stack_depth_a - 1)
 		{
-			rotate(a);
+			ra(a, b, data);
 			i = 0;
 		}
 	}
@@ -225,3 +234,5 @@ void	push_segments(t_stack **a, t_stack **b, t_psdata *data)
 		segment++;
 	}
 }
+
+

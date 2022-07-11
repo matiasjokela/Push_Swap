@@ -78,6 +78,9 @@ void		get_segments(t_stack *stack_a, t_psdata *data);
 void		push_segments(t_stack **a, t_stack **b, t_psdata *data);
 void		max_b(t_stack *a, t_psdata *data);
 void		push_max_b(t_stack **a, t_stack **b, t_psdata *data);
+void		sort_small(t_stack **a, t_stack **b, t_psdata *data);
+void		get_values(t_stack *a, int *min, int *mid, int *max);
+void		sort_three(t_stack **a, t_stack **b, t_psdata *data);
 
 
 #endif
