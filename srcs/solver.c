@@ -249,4 +249,13 @@ void	push_segments(t_stack **a, t_stack **b, t_psdata *data)
 		else
 			ra(a, b, data);
 	}
+	i = 0;
+	j = data->stack_depth_a;
+	while (i++ < j)
+	{
+		if ((*a)->segment == 6)
+			pb(a, b, data);
+		else
+			ra(a, b, data);
+	}
 }
