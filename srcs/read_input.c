@@ -134,12 +134,16 @@ void	get_segments(t_stack *stack_a, t_psdata *data)
 			tmp = tmp->next;
 		if (data->stack_depth_a - marked < 15)
 			tmp->segment = 0;
-		else if (marked < (data->stack_depth_a / 3))
+		else if (marked < (data->stack_depth_a / 5))
 			tmp->segment = 1;
-		else if (marked < ((data->stack_depth_a / 3) * 2))
+		else if (marked < ((data->stack_depth_a / 5) * 2))
 			tmp->segment = 2;
-		else
+		else if (marked < ((data->stack_depth_a / 5) * 3))
 			tmp->segment = 3;
+		else if (marked < ((data->stack_depth_a / 5) * 4))
+			tmp->segment = 4;
+		else
+			tmp->segment = 5;
 		marked++;
 	}
 }
