@@ -11,12 +11,22 @@ void	solve_stacks(t_stack **a, t_stack **b, t_psdata *data)
 	// bubble_sort(a, b, data);
 	push_segments(a, b, data);
 	bubble_sort(a, b, data);
-	//find_and_push(a, b, data);
 
 
-
+	//minimax(*b, data);
+	// ft_printf("b_max: %d, d: %d\n", data->b_max, data->d_to_max);
+	// ft_printf("b_min: %d, d: %d\n", data->b_min, data->d_to_min);
 	while ((*b)->next != NULL)
-		push_max_b(a, b, data);
+		push_next(a, b, data);
+	while (!(is_sorted(*a)))
+	{
+		ra(a, b, data);
+	}
+	
+
+
+	// while ((*b)->next != NULL)
+	// 	push_max_b(a, b, data);
 
 
 	// minimax((*a), data);
@@ -47,7 +57,7 @@ int	is_sorted(t_stack *stack)
 	}
 	return (1);
 }
-
+/*
 void	max_b(t_stack *b, t_psdata *data)
 {
 	int		i;
@@ -96,31 +106,31 @@ void	push_max_b(t_stack **a, t_stack **b, t_psdata *data)
 	if ((*a)->value > (*a)->next->value)
 		sa(*a, *b, data);
 }
+*/
 
-
-void	minimax(t_stack *a, t_psdata *data)
+void	minimax(t_stack *b, t_psdata *data)
 {
 	int	i;
 
 	i = 0;
-	data->a_min = a->value;
-	data->a_max = a->value;
-	data->d_to_min = data->stack_depth_a;
-	data->d_to_max = data->stack_depth_a;
-	while (a->next != NULL)
+	data->b_min = b->value;
+	data->b_max = b->value;
+	data->d_to_min = data->stack_depth_b;
+	data->d_to_max = data->stack_depth_b;
+	while (b->next != NULL)
 	{
-		if (a->value < data->a_min)
+		if (b->value < data->b_min)
 		{
-			data->a_min = a->value;
+			data->b_min = b->value;
 			data->d_to_min = i;
 		}
-		else if (a->value > data->a_max)
+		else if (b->value > data->b_max)
 		{
-			data->a_max = a->value;
+			data->b_max = b->value;
 			data->d_to_max = i;
 		}
 		i++;
-		a = a->next;
+		b = b->next;
 	}
 }
 
@@ -145,13 +155,14 @@ void	bubble_sort(t_stack **a, t_stack **b, t_psdata *data)
 
 void	push_next(t_stack **a, t_stack **b, t_psdata *data)
 {
+	minimax(*b, data);
 	data->rot_dir = 1;
 	data->rot_needed = data->d_to_min;
 	data->min_or_max = 'm';
-	if (data->stack_depth_a - data->d_to_min < data->rot_needed)
+	if (data->stack_depth_b - data->d_to_min < data->rot_needed)
 	{
 		data->rot_dir = 2;
-		data->rot_needed = data->stack_depth_a - data->d_to_min;
+		data->rot_needed = data->stack_depth_b - data->d_to_min;
 	}
 	if (data->d_to_max < data->rot_needed)
 	{
@@ -159,7 +170,7 @@ void	push_next(t_stack **a, t_stack **b, t_psdata *data)
 		data->rot_needed = data->d_to_max;
 		data->min_or_max = 'M';
 	}
-	if (data->stack_depth_a - data->d_to_max < data->rot_needed)
+	if (data->stack_depth_b - data->d_to_max < data->rot_needed)
 	{
 		data->rot_dir = 2;
 		data->min_or_max = 'M';
@@ -172,45 +183,38 @@ void	push_next(t_stack **a, t_stack **b, t_psdata *data)
 
 void	push_min(t_stack **a, t_stack **b, t_psdata *data)
 {
-	while ((*a)->value != data->a_min)
+	while ((*b)->value != data->b_min)
 	{
 		if (data->rot_dir == 1)
-			ra(a, b, data);
-		else
-			rra(a, b, data);
-	}
-	if (data->stack_depth_b == 0)
-		pb(a, b, data);
-	else
-	{
-		while ((*b)->value != data->b_floor)
 			rb(a, b, data);
-		pb(a, b, data);
+		else
+			rrb(a, b, data);
 	}
-	data->b_floor = data->a_min;
+	pa(a, b, data);
+	ra(a, b, data);
 }
 
 void	push_max(t_stack **a, t_stack **b, t_psdata *data)
 {
-	while ((*a)->value != data->a_max)
+	while ((*b)->value != data->b_max)
 	{
 		if (data->rot_dir == 1)
-			ra(a, b, data);
+			rb(a, b, data);
 		else
-			rra(a, b, data);
+			rrb(a, b, data);
 	}
-	while ((*b)->value != data->b_floor)
-		rb(a, b, data);
-	pb(a, b, data);
+	pa(a, b, data);
 }
 
 void	push_segments(t_stack **a, t_stack **b, t_psdata *data)
 {
 	int	i;
 	int	j;
+	int	segment;
 
 	i = 0;
 	j = data->stack_depth_a;
+	segment = 3;
 	while (i++ < j)
 	{
 		if ((*a)->segment == 1 || (*a)->segment == 2)
@@ -222,40 +226,17 @@ void	push_segments(t_stack **a, t_stack **b, t_psdata *data)
 		else
 			ra(a, b, data);
 	}
-	i = 0;
-	j = data->stack_depth_a;
-	while (i++ < j)
+	while (segment <= 6)
 	{
-		if ((*a)->segment == 3)
-			pb(a, b, data);
-		else
-			ra(a, b, data);
-	}
-	i = 0;
-	j = data->stack_depth_a;
-	while (i++ < j)
-	{
-		if ((*a)->segment == 4)
-			pb(a, b, data);
-		else
-			ra(a, b, data);
-	}
-	i = 0;
-	j = data->stack_depth_a;
-	while (i++ < j)
-	{
-		if ((*a)->segment == 5)
-			pb(a, b, data);
-		else
-			ra(a, b, data);
-	}
-	i = 0;
-	j = data->stack_depth_a;
-	while (i++ < j)
-	{
-		if ((*a)->segment == 6)
-			pb(a, b, data);
-		else
-			ra(a, b, data);
+		i = 0;
+		j = data->stack_depth_a;
+		while (i++ < j)
+		{
+			if ((*a)->segment == segment)
+				pb(a, b, data);
+			else
+				ra(a, b, data);
+		}
+		segment++;
 	}
 }
