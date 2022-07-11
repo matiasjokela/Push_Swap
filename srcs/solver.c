@@ -14,6 +14,7 @@ void	solve_stacks(t_stack **a, t_stack **b, t_psdata *data)
 	//find_and_push(a, b, data);
 
 
+
 	while ((*b)->next != NULL)
 		push_max_b(a, b, data);
 
@@ -49,10 +50,13 @@ int	is_sorted(t_stack *stack)
 
 void	max_b(t_stack *b, t_psdata *data)
 {
-	int	i;
+	int		i;
+	t_stack	*tmp;
 
 	i = 0;
+	tmp = b;
 	data->max_b = b->value;
+	data->sec_max_b = -2147483648;
 	data->d_to_max_b = data->stack_depth_b;
 	while (b->next != NULL)
 	{
@@ -63,6 +67,12 @@ void	max_b(t_stack *b, t_psdata *data)
 		}
 		b = b->next;
 		i++;
+	}
+	while (tmp->next != NULL)
+	{
+		if (tmp->value > data->sec_max_b && tmp->value != data->max_b)
+			data->sec_max_b = tmp->value;
+		tmp = tmp->next;
 	}
 }
 
@@ -75,12 +85,16 @@ void	push_max_b(t_stack **a, t_stack **b, t_psdata *data)
 		data->rot_dir = 2;
 	while ((*b)->value != data->max_b)
 	{
+		if ((*b)->value == data->sec_max_b)
+			pa(a, b, data);
 		if (data->rot_dir == 1)
 			rb(a, b, data);
 		else
 			rrb(a, b, data);
 	}
 	pa(a, b, data);
+	if ((*a)->value > (*a)->next->value)
+		sa(*a, *b, data);
 }
 
 

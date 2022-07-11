@@ -34,6 +34,7 @@ typedef struct s_psdata
 	int		d_to_max;
 	int		b_floor;
 	int		max_b;
+	int		sec_max_b;
 	int		d_to_max_b;
 	int		rot_dir;
 	int		rot_needed;
