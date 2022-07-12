@@ -25,7 +25,7 @@ void	solve_stacks(t_stack **a, t_stack **b, t_psdata *data)
 	while ((*b)->next != NULL)
 		minimax(a, b, data);
 	while ((*a)->value != data->global_min)
-		ra(a, b, data, 1);
+		rra(a, b, data, 1);
 	
 	//ft_printf("%-31s %d\n", "final move count:", data->move_count);
 
@@ -228,34 +228,37 @@ void	push_segments(t_stack **a, t_stack **b, t_psdata *data)
 {
 	int	i;
 	int	j;
-	int	segment;
+	int	min_seg;
+	int	max_seg;
 
 	i = 0;
 	j = data->stack_depth_a;
-	segment = 3;
+	min_seg = 4;
+	max_seg = 9;
 	while (i++ < j)
 	{
-		if ((*a)->segment == 1 || (*a)->segment == 2)
+		if ((*a)->segment >= 5 && (*a)->segment <= 8)
 		{
 			pb(a, b, data, 1);
-			if ((*b)->segment == 1)
+			if ((*b)->segment == 6 || (*b)->segment == 7)
 				rb(a, b, data, 1);
 		}
 		else
 			ra(a, b, data, 1);
 	}
-	while (segment <= 6)
+	while (min_seg > 0)
 	{
 		i = 0;
 		j = data->stack_depth_a;
 		while (i++ < j)
 		{
-			if ((*a)->segment == segment)
+			if ((*a)->segment == min_seg || (*a)->segment == max_seg)
 				pb(a, b, data, 1);
 			else
 				ra(a, b, data, 1);
 		}
-		segment++;
+		min_seg--;
+		max_seg++;
 	}
 }
 
