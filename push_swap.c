@@ -28,13 +28,13 @@ int		main(int argc, char **argv)
 		return (1);
 	init_data(data);
 	read_input(stack_a, argc, argv, data);
-	//print_stacks(stack_a, stack_b);
+	print_stacks(stack_a, stack_b);
 	solve_stacks(&stack_a, &stack_b, data);
-	//print_stacks(stack_a, stack_b);
-	// if (!is_sorted(stack_a))
-	// 	ft_printf("NOT SORTED!!\n");
-	// ft_printf("node count: %d\n", data->stack_depth_a);
-	// ft_printf("move count: %d\n", data->move_count);
+	print_stacks(stack_a, stack_b);
+	if (!is_sorted(stack_a))
+		ft_printf("NOT SORTED!!\n");
+	ft_printf("node count: %d\n", data->stack_depth_a);
+	ft_printf("move count: %d\n", data->move_count);
 	
 
 	
