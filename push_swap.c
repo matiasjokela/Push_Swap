@@ -28,36 +28,15 @@ int		main(int argc, char **argv)
 		return (1);
 	init_data(data);
 	read_input(stack_a, argc, argv, data);
-	print_stacks(stack_a, stack_b);
+	//print_stacks(stack_a, stack_b);
 	solve_stacks(&stack_a, &stack_b, data);
-	print_stacks(stack_a, stack_b);
-	if (!is_sorted(stack_a))
-		ft_printf("NOT SORTED!!\n");
-	ft_printf("node count: %d\n", data->stack_depth_a);
-	ft_printf("move count: %d\n", data->move_count);
+	//print_stacks(stack_a, stack_b);
+	// if (!is_sorted(stack_a))
+	// 	ft_printf("NOT SORTED!!\n");
+	// ft_printf("node count: %d\n", data->stack_depth_a);
+	// ft_printf("move count: %d\n", data->move_count);
 	
 
 	
 }
 
-void	init_data(t_psdata *data)
-{
-	data->v_flag = 0;
-	data->c_flag = 0;
-	data->stack_depth_a = 0;
-	data->stack_depth_b = 0;
-	data->move_count = 0;
-}
-
-t_stack	*new_node(int nbr)
-{
-	t_stack	*node;
-
-	node = (t_stack *)malloc(sizeof(t_stack));
-	if (node == 0)
-		exit(1);
-	node->value = nbr;
-	node->segment = -1;
-	node->next = NULL;
-	return (node);
-}

@@ -59,17 +59,17 @@ void		rev_rotate(t_stack **stack);
 void		solve_stacks(t_stack **a, t_stack **b, t_psdata *data);
 int			is_sorted(t_stack *stack);
 void		minimax(t_stack *b, t_psdata *data);
-void		sa(t_stack *a, t_stack *b, t_psdata *data);
-void		sb(t_stack *a, t_stack *b, t_psdata *data);
-void		ss(t_stack *a, t_stack *b, t_psdata *data);
-void		pa(t_stack **a, t_stack **b, t_psdata *data);
-void		pb(t_stack **a, t_stack **b, t_psdata *data);
-void		ra(t_stack **a, t_stack **b, t_psdata *data);
-void		rb(t_stack **a, t_stack **b, t_psdata *data);
-void		rr(t_stack **a, t_stack **b, t_psdata *data);
-void		rra(t_stack **a, t_stack **b, t_psdata *data);
-void		rrb(t_stack **a, t_stack **b, t_psdata *data);
-void		rrr(t_stack **a, t_stack **b, t_psdata *data);
+void		sa(t_stack *a, t_stack *b, t_psdata *data, int print);
+void		sb(t_stack *a, t_stack *b, t_psdata *data, int print);
+void		ss(t_stack *a, t_stack *b, t_psdata *data, int print);
+void		pa(t_stack **a, t_stack **b, t_psdata *data, int print);
+void		pb(t_stack **a, t_stack **b, t_psdata *data, int print);
+void		ra(t_stack **a, t_stack **b, t_psdata *data, int print);
+void		rb(t_stack **a, t_stack **b, t_psdata *data, int print);
+void		rr(t_stack **a, t_stack **b, t_psdata *data, int print);
+void		rra(t_stack **a, t_stack **b, t_psdata *data, int print);
+void		rrb(t_stack **a, t_stack **b, t_psdata *data, int print);
+void		rrr(t_stack **a, t_stack **b, t_psdata *data, int print);
 void		bubble_sort(t_stack **a, t_stack **b, t_psdata *data);
 void		push_next(t_stack **a, t_stack **b, t_psdata *data);
 void		push_min(t_stack **a, t_stack **b, t_psdata *data);
@@ -82,6 +82,7 @@ void		sort_small(t_stack **a, t_stack **b, t_psdata *data);
 void		get_values(t_stack *a, int *min, int *mid, int *max);
 void		sort_three(t_stack **a, t_stack **b, t_psdata *data);
 void		visualize(t_stack *a, t_stack *b, t_psdata *data);
+void		execute_commands(t_stack **a, t_stack **b, t_psdata *data);
 
 
 #endif

@@ -9,14 +9,14 @@ void	sort_small(t_stack **a, t_stack **b, t_psdata *data)
 	if (data->stack_depth_a == 2)
 	{
 		if ((*a)->value > (*a)->next->value)
-			sa(*a, *b, data);
+			sa(*a, *b, data, 1);
 		return ;
 	}
 	while (data->stack_depth_a > 3)
 	{
 		if ((*a)->segment != 0)
-			pb(a, b, data);
-		ra(a, b, data);
+			pb(a, b, data, 1);
+		ra(a, b, data, 1);
 	}
 	sort_three(a, b, data);
 	while ((*b)->next != NULL)
@@ -68,18 +68,18 @@ void	sort_three(t_stack **a, t_stack **b, t_psdata *data)
 	get_values(*a, &min, &mid, &max);
 	if ((*a)->value == max && (*a)->next->value == mid)
 	{
-		sa(*a, *b, data);
-		rra(a, b, data);
+		sa(*a, *b, data, 1);
+		rra(a, b, data, 1);
 	}
 	else if ((*a)->value == mid && (*a)->next->value == max)
-		rra(a, b, data);
+		rra(a, b, data, 1);
 	else if ((*a)->value == mid && (*a)->next->value == min)
-		sa(*a, *b, data);
+		sa(*a, *b, data, 1);
 	else if ((*a)->value == min && (*a)->next->value == max)
 	{
-		rra(a, b, data);
-		sa(*a, *b, data);
+		rra(a, b, data, 1);
+		sa(*a, *b, data, 1);
 	}
 	else if ((*a)->value == max && (*a)->next->value == min)
-		ra(a, b, data);
+		ra(a, b, data, 1);
 }

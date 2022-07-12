@@ -88,16 +88,16 @@ void	push_max_b(t_stack **a, t_stack **b, t_psdata *data)
 		// visualize(*a, *b, data);
 		// sleep(1);
 		if ((*b)->value == data->sec_max_b)
-			pa(a, b, data);
+			pa(a, b, data, 1);
 		else if (data->rot_dir == 1)
-			rb(a, b, data);
+			rb(a, b, data, 1);
 		else
-			rrb(a, b, data);
+			rrb(a, b, data, 1);
 	}
 	// int	prev_seg = (*a)->segment;
-	pa(a, b, data);
+	pa(a, b, data, 1);
 	if ((*a)->value > (*a)->next->value)
-		sa(*a, *b, data);
+		sa(*a, *b, data, 1);
 	// if ((*a)->segment != prev_seg)
 	// 	ft_printf("move count after segment %d:     %d\n", prev_seg, data->move_count);
 }
@@ -137,12 +137,12 @@ void	bubble_sort(t_stack **a, t_stack **b, t_psdata *data)
 	while (is_sorted(*a) == 0)
 	{
 		if ((*a)->value > (*a)->next->value)
-			sa((*a), (*b), data);
-		ra(a, b, data);
+			sa((*a), (*b), data, 1);
+		ra(a, b, data, 1);
 		i++;
 		if (i == data->stack_depth_a - 1)
 		{
-			ra(a, b, data);
+			ra(a, b, data, 1);
 			i = 0;
 		}
 	}
@@ -181,12 +181,12 @@ void	push_min(t_stack **a, t_stack **b, t_psdata *data)
 	while ((*b)->value != data->b_min)
 	{
 		if (data->rot_dir == 1)
-			rb(a, b, data);
+			rb(a, b, data, 1);
 		else
-			rrb(a, b, data);
+			rrb(a, b, data, 1);
 	}
-	pa(a, b, data);
-	ra(a, b, data);
+	pa(a, b, data, 1);
+	ra(a, b, data, 1);
 }
 
 void	push_max(t_stack **a, t_stack **b, t_psdata *data)
@@ -194,11 +194,11 @@ void	push_max(t_stack **a, t_stack **b, t_psdata *data)
 	while ((*b)->value != data->b_max)
 	{
 		if (data->rot_dir == 1)
-			rb(a, b, data);
+			rb(a, b, data, 1);
 		else
-			rrb(a, b, data);
+			rrb(a, b, data, 1);
 	}
-	pa(a, b, data);
+	pa(a, b, data, 1);
 }
 
 void	push_segments(t_stack **a, t_stack **b, t_psdata *data)
@@ -214,12 +214,12 @@ void	push_segments(t_stack **a, t_stack **b, t_psdata *data)
 	{
 		if ((*a)->segment == 1 || (*a)->segment == 2)
 		{
-			pb(a, b, data);
+			pb(a, b, data, 1);
 			if ((*b)->segment == 1)
-				rb(a, b, data);
+				rb(a, b, data, 1);
 		}
 		else
-			ra(a, b, data);
+			ra(a, b, data, 1);
 	}
 	while (segment <= 6)
 	{
@@ -228,9 +228,9 @@ void	push_segments(t_stack **a, t_stack **b, t_psdata *data)
 		while (i++ < j)
 		{
 			if ((*a)->segment == segment)
-				pb(a, b, data);
+				pb(a, b, data, 1);
 			else
-				ra(a, b, data);
+				ra(a, b, data, 1);
 		}
 		segment++;
 	}
