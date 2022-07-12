@@ -192,6 +192,8 @@ void	push_min(t_stack **a, t_stack **b, t_psdata *data)
 	pushed_sec = 0;
 	while ((*b)->value != data->min_b)
 	{
+		// visualize(*a, *b, data);
+		// sleep(1);
 		if ((*b)->value == data->sec_min_b)
 		{
 			pa(a, b, data, 1);
@@ -210,6 +212,8 @@ void	push_min(t_stack **a, t_stack **b, t_psdata *data)
 
 void	push_max(t_stack **a, t_stack **b, t_psdata *data)
 {
+	// visualize(*a, *b, data);
+	// sleep(1);
 	while ((*b)->value != data->max_b)
 	{
 		if ((*b)->value == data->sec_max_b)
@@ -233,14 +237,14 @@ void	push_segments(t_stack **a, t_stack **b, t_psdata *data)
 
 	i = 0;
 	j = data->stack_depth_a;
-	min_seg = 4;
-	max_seg = 9;
+	min_seg = 6;
+	max_seg = 11;
 	while (i++ < j)
 	{
-		if ((*a)->segment >= 5 && (*a)->segment <= 8)
+		if ((*a)->segment >= 7 && (*a)->segment <= 10)
 		{
 			pb(a, b, data, 1);
-			if ((*b)->segment == 6 || (*b)->segment == 7)
+			if ((*b)->segment == 8 || (*b)->segment == 9)
 				rb(a, b, data, 1);
 		}
 		else

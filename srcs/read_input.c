@@ -117,8 +117,10 @@ void	get_segments(t_stack *stack_a, t_psdata *data)
 	t_stack	*tmp;
 	int		min;
 	int		marked;
+	int		seg_count;
 
 	marked = 0;
+	seg_count = 16;
 	while (marked < data->stack_depth_a)
 	{
 		tmp = stack_a;
@@ -134,30 +136,38 @@ void	get_segments(t_stack *stack_a, t_psdata *data)
 			tmp = tmp->next;
 		if (data->stack_depth_a - marked < 4)
 			tmp->segment = 0;
-		else if (marked < (data->stack_depth_a / 12))
+		else if (marked < (data->stack_depth_a / seg_count))
 			tmp->segment = 1;
-		else if (marked < ((data->stack_depth_a / 12) * 2))
+		else if (marked < ((data->stack_depth_a / seg_count) * 2))
 			tmp->segment = 2;
-		else if (marked < ((data->stack_depth_a / 12) * 3))
+		else if (marked < ((data->stack_depth_a / seg_count) * 3))
 			tmp->segment = 3;
-		else if (marked < ((data->stack_depth_a / 12) * 4))
+		else if (marked < ((data->stack_depth_a / seg_count) * 4))
 			tmp->segment = 4;
-		else if (marked < ((data->stack_depth_a / 12) * 5))
+		else if (marked < ((data->stack_depth_a / seg_count) * 5))
 			tmp->segment = 5;
-		else if (marked < ((data->stack_depth_a / 12) * 6))
+		else if (marked < ((data->stack_depth_a / seg_count) * 6))
 			tmp->segment = 6;
-		else if (marked < ((data->stack_depth_a / 12) * 7))
+		else if (marked < ((data->stack_depth_a / seg_count) * 7))
 			tmp->segment = 7;
-		else if (marked < ((data->stack_depth_a / 12) * 8))
+		else if (marked < ((data->stack_depth_a / seg_count) * 8))
 			tmp->segment = 8;
-		else if (marked < ((data->stack_depth_a / 12) * 9))
+		else if (marked < ((data->stack_depth_a / seg_count) * 9))
 			tmp->segment = 9;
-		else if (marked < ((data->stack_depth_a / 12) * 10))
+		else if (marked < ((data->stack_depth_a / seg_count) * 10))
 			tmp->segment = 10;
-		else if (marked < ((data->stack_depth_a / 12) * 11))
+		else if (marked < ((data->stack_depth_a / seg_count) * 11))
 			tmp->segment = 11;
-		else
+		else if (marked < ((data->stack_depth_a / seg_count) * 12))
 			tmp->segment = 12;
+		else if (marked < ((data->stack_depth_a / seg_count) * 13))
+			tmp->segment = 13;
+		else if (marked < ((data->stack_depth_a / seg_count) * 14))
+			tmp->segment = 14;
+		else if (marked < ((data->stack_depth_a / seg_count) * 15))
+			tmp->segment = 15;
+		else
+			tmp->segment = 16;
 		marked++;
 	}
 }

@@ -57,10 +57,14 @@ void	visualize(t_stack *a, t_stack *b, t_psdata *data)
 			ft_printf("%12c", ' ');
 		if (b->next != NULL)
 		{
-			if (b->value == data->sec_max_b)
+			if (b->value == data->sec_min_b)
+				ft_printf("%s%12d%s", BLUE, b->value, RESET);
+			else if (b->value == data->min_b)
+				ft_printf("%s%12d%s", GREEN, b->value, RESET);
+			else if (b->value == data->sec_max_b)
 				ft_printf("%s%12d%s", YELLOW, b->value, RESET);
 			else if (b->value == data->max_b)
-				ft_printf("%s%12d%s", GREEN, b->value, RESET);
+				ft_printf("%s%12d%s", RED, b->value, RESET);
 			else
 				ft_printf("%12d", b->value);
 			b = b->next;
