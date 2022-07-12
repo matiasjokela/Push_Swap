@@ -7,7 +7,7 @@ void	solve_stacks(t_stack **a, t_stack **b, t_psdata *data)
 
 	if (is_sorted(*a))
 		return ;
-	if (data->stack_depth_a < 6)
+	if (data->stack_depth_a < 60)
 	{
 		sort_small(a, b, data);
 		return ;
@@ -16,19 +16,15 @@ void	solve_stacks(t_stack **a, t_stack **b, t_psdata *data)
 
 
 	push_segments(a, b, data);
-	bubble_sort(a, b, data);
+	sort_three(a, b, data);
+	//ft_printf("%-31s %d\n", "move count after push_segments:", data->move_count);
 
 	while ((*b)->next != NULL)
 		push_max_b(a, b, data);
 
+	//ft_printf("%-31s %d\n", "final move count:", data->move_count);
 
 
-	// while ((*b)->next != NULL)
-	// 	push_next(a, b, data);
-	// while (!(is_sorted(*a)))
-	// {
-	// 	ra(a, b, data);
-	// }
 	
 
 
@@ -89,16 +85,21 @@ void	push_max_b(t_stack **a, t_stack **b, t_psdata *data)
 		data->rot_dir = 2;
 	while ((*b)->value != data->max_b)
 	{
+		// visualize(*a, *b, data);
+		// sleep(1);
 		if ((*b)->value == data->sec_max_b)
 			pa(a, b, data);
-		if (data->rot_dir == 1)
+		else if (data->rot_dir == 1)
 			rb(a, b, data);
 		else
 			rrb(a, b, data);
 	}
+	// int	prev_seg = (*a)->segment;
 	pa(a, b, data);
 	if ((*a)->value > (*a)->next->value)
 		sa(*a, *b, data);
+	// if ((*a)->segment != prev_seg)
+	// 	ft_printf("move count after segment %d:     %d\n", prev_seg, data->move_count);
 }
 
 

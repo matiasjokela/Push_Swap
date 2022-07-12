@@ -42,3 +42,32 @@ void	print_error(void)
 	exit(1);
 }
 
+void	visualize(t_stack *a, t_stack *b, t_psdata *data)
+{
+	ft_printf("move count: %d\n", data->move_count);
+	ft_printf("Stacks:\n");
+	while (!(a->next == NULL && b->next == NULL))
+	{
+		if (a->next != NULL)
+		{
+			ft_printf("%12d", a->value);
+			a = a->next;
+		}
+		else
+			ft_printf("%12c", ' ');
+		if (b->next != NULL)
+		{
+			if (b->value == data->sec_max_b)
+				ft_printf("%s%12d%s", YELLOW, b->value, RESET);
+			else if (b->value == data->max_b)
+				ft_printf("%s%12d%s", GREEN, b->value, RESET);
+			else
+				ft_printf("%12d", b->value);
+			b = b->next;
+		}
+		else
+			ft_printf("%12c", ' ');
+		ft_printf("\n");
+	}
+	ft_printf("\n           A           B\n");
+}

@@ -13,11 +13,15 @@ void	sort_small(t_stack **a, t_stack **b, t_psdata *data)
 		return ;
 	}
 	while (data->stack_depth_a > 3)
-		pb(a, b, data);
+	{
+		if ((*a)->segment != 0)
+			pb(a, b, data);
+		ra(a, b, data);
+	}
 	sort_three(a, b, data);
+	while ((*b)->next != NULL)
+		push_max_b(a, b, data);
 
-	// while ((*b)->next != NULL)
-		
 	
 
 	// need to handle > 3!!

@@ -132,7 +132,7 @@ void	get_segments(t_stack *stack_a, t_psdata *data)
 		tmp = stack_a;
 		while (tmp->value != min)
 			tmp = tmp->next;
-		if (data->stack_depth_a - marked < 15)
+		if (data->stack_depth_a - marked < 4)
 			tmp->segment = 0;
 		else if (marked < (data->stack_depth_a / 6))
 			tmp->segment = 1;
