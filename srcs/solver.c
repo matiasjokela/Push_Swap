@@ -15,9 +15,9 @@ void	solve_stacks(t_stack **a, t_stack **b, t_psdata *data)
 		return ;
 	}
 	if (data->stack_depth_a > 200)
-		seg_count = 16;
+		seg_count = 32;
 	else
-		seg_count = 8;
+		seg_count = 16;
 	get_segments(*a, data, seg_count);
 	push_segments(a, b, data, seg_count);
 	sort_three(a, b, data);
@@ -239,101 +239,40 @@ void	push_segments(t_stack **a, t_stack **b, t_psdata *data, int sc)
 {
 	int	i;
 	int	j;
-	// int	min_seg;
-	// int	max_seg;
-	// int	mid_seg;
-	(void)sc;
-
-	i = 0;
-	j = data->stack_depth_a;
-	// mid_seg = sc / 2;
-	// min_seg = (mid_seg - 2);
-	// max_seg = (mid_seg + 3);
-	while (i++ < j)
-	{
-		if ((*a)->segment >= 7 && (*a)->segment <= 10)
-		{
-			pb(a, b, data, 1);
-			if ((*b)->segment == 8 || (*b)->segment == 9)
-			{
-				if ((*a)->segment >= 7 && (*a)->segment <= 10)
-					rb(a, b, data, 1);
-				else
-				{
-					rr(a, b, data, 1);
-					i++;
-				}
-			}
-		}
-		else
-			ra(a, b, data, 1);
-	}
-	i = 0;
-	j = data->stack_depth_a;
-	while (i++ < j)
-	{
-		if ((*a)->segment >= 5 && (*a)->segment <= 12)
-		{
-			pb(a, b, data, 1);
-			if ((*b)->segment == 6 || (*b)->segment == 11)
-			{
-				if ((*a)->segment >= 5 && (*a)->segment <= 12)
-					rb(a, b, data, 1);
-				else
-				{
-					rr(a, b, data, 1);
-					i++;
-				}
-			}
-		}
-		else
-			ra(a, b, data, 1);
-	}
-	i = 0;
-	j = data->stack_depth_a;
-	while (i++ < j)
-	{
-		if ((*a)->segment >= 3 && (*a)->segment <= 14)
-		{
-			pb(a, b, data, 1);
-			if ((*b)->segment == 4 || (*b)->segment == 13)
-			{
-				if ((*a)->segment >= 3 && (*a)->segment <= 14)
-					rb(a, b, data, 1);
-				else
-				{
-					rr(a, b, data, 1);
-					i++;
-				}
-			}
-		}
-		else
-			ra(a, b, data, 1);
-	}
-	i = 0;
-	j = data->stack_depth_a;
-	while (i++ < j)
-	{
-		if ((*a)->segment >= 1 && (*a)->segment <= 16)
-		{
-			pb(a, b, data, 1);
-			if ((*b)->segment == 2 || (*b)->segment == 15)
-			{
-				if ((*a)->segment >= 1 && (*a)->segment <= 16)
-					rb(a, b, data, 1);
-				else
-				{
-					rr(a, b, data, 1);
-					i++;
-				}
-			}
-		}
-		else
-			ra(a, b, data, 1);
-	}
+	int	min_seg;
+	int	max_seg;
+	int	mid_seg;
 
 
-
+	mid_seg = sc / 2;
+	min_seg = (mid_seg - 1);
+	max_seg = (mid_seg + 2);
+	while (min_seg > 0)
+	{
+		i = 0;
+		j = data->stack_depth_a;
+		while (i++ < j)
+		{
+			if ((*a)->segment >= min_seg && (*a)->segment <= max_seg)
+			{
+				pb(a, b, data, 1);
+				if ((*b)->segment == (min_seg + 1) || (*b)->segment == (max_seg - 1))
+				{
+					if ((*a)->segment >= min_seg && (*a)->segment <= max_seg)
+						rb(a, b, data, 1);
+					else
+					{
+						rr(a, b, data, 1);
+						i++;
+					}
+				}
+			}
+		else
+			ra(a, b, data, 1);
+		}
+		min_seg -= 2;
+		max_seg += 2;
+	}
 }
 
 void	get_segments(t_stack *stack_a, t_psdata *data, int seg_count)
