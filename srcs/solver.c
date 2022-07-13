@@ -16,7 +16,7 @@ void	solve_stacks(t_stack **a, t_stack **b, t_psdata *data)
 
 
 
-	push_segments(a, b, data);
+	push_segments(a, b, data, 16);
 	sort_three(a, b, data);
 
 	// print_stacks(*a, *b);
@@ -232,23 +232,25 @@ void	push_max(t_stack **a, t_stack **b, t_psdata *data)
 		sa(*a, *b, data, 1);
 }
 
-void	push_segments(t_stack **a, t_stack **b, t_psdata *data)
+void	push_segments(t_stack **a, t_stack **b, t_psdata *data, int sc)
 {
 	int	i;
 	int	j;
 	int	min_seg;
 	int	max_seg;
+	int	mid_seg;
 
 	i = 0;
 	j = data->stack_depth_a;
-	min_seg = 6;
-	max_seg = 11;
+	mid_seg = sc / 2;
+	min_seg = (mid_seg - 2);
+	max_seg = (mid_seg + 3);
 	while (i++ < j)
 	{
-		if ((*a)->segment >= 7 && (*a)->segment <= 10)
+		if ((*a)->segment >= (mid_seg - 1) && (*a)->segment <= (mid_seg + 2))
 		{
 			pb(a, b, data, 1);
-			if ((*b)->segment == 8 || (*b)->segment == 9)
+			if ((*b)->segment == mid_seg || (*b)->segment == (mid_seg + 1))
 				rb(a, b, data, 1);
 		}
 		else
