@@ -239,40 +239,101 @@ void	push_segments(t_stack **a, t_stack **b, t_psdata *data, int sc)
 {
 	int	i;
 	int	j;
-	int	min_seg;
-	int	max_seg;
-	int	mid_seg;
+	// int	min_seg;
+	// int	max_seg;
+	// int	mid_seg;
+	(void)sc;
 
 	i = 0;
 	j = data->stack_depth_a;
-	mid_seg = sc / 2;
-	min_seg = (mid_seg - 2);
-	max_seg = (mid_seg + 3);
+	// mid_seg = sc / 2;
+	// min_seg = (mid_seg - 2);
+	// max_seg = (mid_seg + 3);
 	while (i++ < j)
 	{
-		if ((*a)->segment >= (mid_seg - 1) && (*a)->segment <= (mid_seg + 2))
+		if ((*a)->segment >= 7 && (*a)->segment <= 10)
 		{
 			pb(a, b, data, 1);
-			if ((*b)->segment == mid_seg || (*b)->segment == (mid_seg + 1))
-				rb(a, b, data, 1);
+			if ((*b)->segment == 8 || (*b)->segment == 9)
+			{
+				if ((*a)->segment >= 7 && (*a)->segment <= 10)
+					rb(a, b, data, 1);
+				else
+				{
+					rr(a, b, data, 1);
+					i++;
+				}
+			}
 		}
 		else
 			ra(a, b, data, 1);
 	}
-	while (min_seg > 0)
+	i = 0;
+	j = data->stack_depth_a;
+	while (i++ < j)
 	{
-		i = 0;
-		j = data->stack_depth_a;
-		while (i++ < j)
+		if ((*a)->segment >= 5 && (*a)->segment <= 12)
 		{
-			if ((*a)->segment == min_seg || (*a)->segment == max_seg)
-				pb(a, b, data, 1);
-			else
-				ra(a, b, data, 1);
+			pb(a, b, data, 1);
+			if ((*b)->segment == 6 || (*b)->segment == 11)
+			{
+				if ((*a)->segment >= 5 && (*a)->segment <= 12)
+					rb(a, b, data, 1);
+				else
+				{
+					rr(a, b, data, 1);
+					i++;
+				}
+			}
 		}
-		min_seg--;
-		max_seg++;
+		else
+			ra(a, b, data, 1);
 	}
+	i = 0;
+	j = data->stack_depth_a;
+	while (i++ < j)
+	{
+		if ((*a)->segment >= 3 && (*a)->segment <= 14)
+		{
+			pb(a, b, data, 1);
+			if ((*b)->segment == 4 || (*b)->segment == 13)
+			{
+				if ((*a)->segment >= 3 && (*a)->segment <= 14)
+					rb(a, b, data, 1);
+				else
+				{
+					rr(a, b, data, 1);
+					i++;
+				}
+			}
+		}
+		else
+			ra(a, b, data, 1);
+	}
+	i = 0;
+	j = data->stack_depth_a;
+	while (i++ < j)
+	{
+		if ((*a)->segment >= 1 && (*a)->segment <= 16)
+		{
+			pb(a, b, data, 1);
+			if ((*b)->segment == 2 || (*b)->segment == 15)
+			{
+				if ((*a)->segment >= 1 && (*a)->segment <= 16)
+					rb(a, b, data, 1);
+				else
+				{
+					rr(a, b, data, 1);
+					i++;
+				}
+			}
+		}
+		else
+			ra(a, b, data, 1);
+	}
+
+
+
 }
 
 void	get_segments(t_stack *stack_a, t_psdata *data, int seg_count)
