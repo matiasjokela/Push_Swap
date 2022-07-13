@@ -4,19 +4,22 @@
 
 void	solve_stacks(t_stack **a, t_stack **b, t_psdata *data)
 {
+	int	seg_count;
 
 	if (is_sorted(*a))
 		return ;
 	if (data->stack_depth_a < 60)
 	{
+		get_segments(*a, data, 6);
 		sort_small(a, b, data);
 		return ;
 	}
-	get_segments(*a, data, 16);
-
-
-
-	push_segments(a, b, data, 16);
+	if (data->stack_depth_a > 200)
+		seg_count = 16;
+	else
+		seg_count = 8;
+	get_segments(*a, data, seg_count);
+	push_segments(a, b, data, seg_count);
 	sort_three(a, b, data);
 
 	// print_stacks(*a, *b);

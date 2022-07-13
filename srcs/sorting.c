@@ -16,7 +16,8 @@ void	sort_small(t_stack **a, t_stack **b, t_psdata *data)
 	{
 		if ((*a)->segment != 0)
 			pb(a, b, data, 1);
-		ra(a, b, data, 1);
+		else
+			ra(a, b, data, 1);
 	}
 	sort_three(a, b, data);
 	while ((*b)->next != NULL)
@@ -24,7 +25,6 @@ void	sort_small(t_stack **a, t_stack **b, t_psdata *data)
 
 	
 
-	// need to handle > 3!!
 
 	
 
