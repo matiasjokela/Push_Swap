@@ -12,12 +12,16 @@ void	solve_stacks(t_stack **a, t_stack **b, t_psdata *data)
 		sort_small(a, b, data);
 		return ;
 	}
-
+	get_segments(*a, data, 16);
 
 
 
 	push_segments(a, b, data);
 	sort_three(a, b, data);
+
+	// print_stacks(*a, *b);
+	// ft_printf("move count: %d\n", data->move_count);
+	// exit(0);
 	min_b(*b, data);
 	data->global_min = data->min_b;
 	//ft_printf("%-31s %d\n", "move count after push_segments:", data->move_count);
@@ -266,4 +270,41 @@ void	push_segments(t_stack **a, t_stack **b, t_psdata *data)
 	}
 }
 
+void	get_segments(t_stack *stack_a, t_psdata *data, int seg_count)
+{
+	t_stack	*tmp;
+	int		min;
+	int		marked;
+	int		i;
+	int		j;
 
+	marked = 0;
+	i = 1;
+	j = 0;
+	while (marked < data->stack_depth_a)
+	{
+		tmp = stack_a;
+		min = 2147483647;
+		if (j > data->stack_depth_a / seg_count)
+		{
+			j = 0;
+			i++;
+		}
+		while (tmp->next != NULL)
+		{
+			if (tmp->value < min && tmp->segment == -1)
+				min = tmp->value;
+			tmp = tmp->next;
+		}
+		tmp = stack_a;
+		while (tmp->value != min)
+			tmp = tmp->next;
+		if (data->stack_depth_a - marked < 4)
+			tmp->segment = 0;
+		else
+			tmp->segment = i;
+		marked++;
+		j++;
+
+	}
+}

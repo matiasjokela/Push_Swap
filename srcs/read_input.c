@@ -25,7 +25,7 @@ void	read_input(t_stack *stack_a, int argc, char **argv, t_psdata *data)
 		read_values(&stack_a, argv[i++], data);
 	stack_a = tmp;
 	check_duplicates(stack_a);
-	get_segments(stack_a, data);
+	
 }
 
 void	check_flags(char **argv, t_psdata *data, int *i)
@@ -112,62 +112,3 @@ void	check_duplicates(t_stack *a)
 	}
 }
 
-void	get_segments(t_stack *stack_a, t_psdata *data)
-{
-	t_stack	*tmp;
-	int		min;
-	int		marked;
-	int		seg_count;
-
-	marked = 0;
-	seg_count = 16;
-	while (marked < data->stack_depth_a)
-	{
-		tmp = stack_a;
-		min = 2147483647;
-		while (tmp->next != NULL)
-		{
-			if (tmp->value < min && tmp->segment == -1)
-				min = tmp->value;
-			tmp = tmp->next;
-		}
-		tmp = stack_a;
-		while (tmp->value != min)
-			tmp = tmp->next;
-		if (data->stack_depth_a - marked < 4)
-			tmp->segment = 0;
-		else if (marked < (data->stack_depth_a / seg_count))
-			tmp->segment = 1;
-		else if (marked < ((data->stack_depth_a / seg_count) * 2))
-			tmp->segment = 2;
-		else if (marked < ((data->stack_depth_a / seg_count) * 3))
-			tmp->segment = 3;
-		else if (marked < ((data->stack_depth_a / seg_count) * 4))
-			tmp->segment = 4;
-		else if (marked < ((data->stack_depth_a / seg_count) * 5))
-			tmp->segment = 5;
-		else if (marked < ((data->stack_depth_a / seg_count) * 6))
-			tmp->segment = 6;
-		else if (marked < ((data->stack_depth_a / seg_count) * 7))
-			tmp->segment = 7;
-		else if (marked < ((data->stack_depth_a / seg_count) * 8))
-			tmp->segment = 8;
-		else if (marked < ((data->stack_depth_a / seg_count) * 9))
-			tmp->segment = 9;
-		else if (marked < ((data->stack_depth_a / seg_count) * 10))
-			tmp->segment = 10;
-		else if (marked < ((data->stack_depth_a / seg_count) * 11))
-			tmp->segment = 11;
-		else if (marked < ((data->stack_depth_a / seg_count) * 12))
-			tmp->segment = 12;
-		else if (marked < ((data->stack_depth_a / seg_count) * 13))
-			tmp->segment = 13;
-		else if (marked < ((data->stack_depth_a / seg_count) * 14))
-			tmp->segment = 14;
-		else if (marked < ((data->stack_depth_a / seg_count) * 15))
-			tmp->segment = 15;
-		else
-			tmp->segment = 16;
-		marked++;
-	}
-}

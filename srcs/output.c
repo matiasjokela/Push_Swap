@@ -19,14 +19,14 @@ void	print_stacks(t_stack *a, t_stack *b)
 	{
 		if (a->next != NULL)
 		{
-			ft_printf("%12d", a->value);
+			ft_printf("%12d %d", a->value, a->segment);
 			a = a->next;
 		}
 		else
 			ft_printf("%12c", ' ');
 		if (b->next != NULL)
 		{
-			ft_printf("%12d", b->value);
+			ft_printf("%12d %d", b->value, b->segment);
 			b = b->next;
 		}
 		else
