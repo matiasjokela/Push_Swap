@@ -27,12 +27,12 @@ all: $(NAME)
 $(NAME):
 	@cd ./libft/ && $(MAKE) && cd ..;
 	@cp ./libft/libft.a ./$(NAME);
-	@gcc -c -Wall -Werror -Wextra -g -fsanitize=address $(HEADER) $(SRCS);
+	@gcc -c -Wall -Werror -Wextra $(HEADER) $(SRCS);
 	@ar rc $(NAME) $(O_FILES);
 	@mv $(O_FILES) $(SRC_DIR)
 	@ranlib $(NAME);
-	@gcc -Wall -Werror -Wextra -o push_swap push_swap.c -g -fsanitize=address -L. -lpush_swap
-	@gcc -Wall -Werror -Wextra -o checker checker.c -g -fsanitize=address -L. -lpush_swap
+	@gcc -Wall -Werror -Wextra -o push_swap push_swap.c -L. -lpush_swap
+	@gcc -Wall -Werror -Wextra -o checker checker.c -L. -lpush_swap
 
 clean:
 	@cd ./libft/ && $(MAKE) clean && cd ..;

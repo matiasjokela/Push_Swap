@@ -6,38 +6,43 @@ void	get_segments(t_stack *stack_a, t_psdata *data, int seg_count)
 {
 	t_stack	*tmp;
 	int		min;
-	int		marked;
 	int		i;
 	int		j;
 
-	marked = 0;
 	i = 1;
 	j = 0;
-	while (marked < data->stack_depth_a)
+	while (data->marked < data->stack_depth_a)
 	{
-		tmp = stack_a;
-		min = 2147483647;
 		if (j > data->stack_depth_a / seg_count)
 		{
 			j = 0;
 			i++;
 		}
-		while (tmp->next != NULL)
-		{
-			if (tmp->value < min && tmp->segment == -1)
-				min = tmp->value;
-			tmp = tmp->next;
-		}
 		tmp = stack_a;
+		min = get_next_min(tmp);
 		while (tmp->value != min)
 			tmp = tmp->next;
-		if (data->stack_depth_a - marked < 4)
+		if (data->stack_depth_a - data->marked < 4)
 			tmp->segment = 0;
 		else
 			tmp->segment = i;
-		marked++;
+		data->marked += 1;
 		j++;
 	}
+}
+
+int	get_next_min(t_stack *tmp)
+{
+	int min;
+
+	min = 2147483647;
+	while (tmp->next != NULL)
+	{
+		if (tmp->value < min && tmp->segment == -1)
+			min = tmp->value;
+		tmp = tmp->next;
+	}
+	return (min);
 }
 
 void	push_segments(t_stack **a, t_stack **b, t_psdata *data)

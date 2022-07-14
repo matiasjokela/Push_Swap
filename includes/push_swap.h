@@ -41,6 +41,7 @@ typedef struct s_psdata
 	int		seg_count;
 	int		min_seg;
 	int		max_seg;
+	int		marked;
 	int		move_count;
 }			t_psdata;
 
@@ -87,5 +88,6 @@ void		execute_commands(t_stack **a, t_stack **b, t_psdata *data);
 void		print_colours(t_stack *a, t_stack *b, t_psdata *data, char *cmd);
 void		check_line(t_stack **a, t_stack **b, t_psdata *data, char *line);
 void		push_next_segments(t_stack **a, t_stack **b, t_psdata *data, int j);
+int			get_next_min(t_stack *tmp);
 
 #endif
