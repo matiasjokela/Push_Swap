@@ -42,9 +42,41 @@ void	print_error(void)
 	exit(1);
 }
 
+void	print_colours(t_stack *a, t_stack *b, t_psdata *data, char *cmd)
+{
+	// 	char	*up = "\u2191";
+	// char	*down = "\u2193";
+	// char	*left = "\u2190";
+	// char	*right = "\u2192";
+	// char	*swap2 = "\u21c5";
+	sleep(1);
+	if (ft_strcmp(cmd, "sa") == 0)
+		ft_printf("%s%14s%s\n", GREEN, "\u21c5", RESET);
+	else if (ft_strcmp(cmd, "sb") == 0)
+		ft_printf("%s%26s%s\n", GREEN, "\u21c5", RESET);
+	else if (ft_strcmp(cmd, "ss") == 0)
+		ft_printf("%s%14s%14s%s\n", GREEN, "\u21c5", "\u21c5", RESET);
+	else if (ft_strcmp(cmd, "pa") == 0)
+		ft_printf("%s%26s%s\n", GREEN, "\u2190", RESET);
+	else if (ft_strcmp(cmd, "pb") == 0)
+		ft_printf("%s%14s%s\n", GREEN, "\u2192", RESET);
+	else if (ft_strcmp(cmd, "ra") == 0)
+		ft_printf("%s%14s%s\n", GREEN, "\u2191", RESET);
+	else if (ft_strcmp(cmd, "rb") == 0)
+		ft_printf("%s%26s%s\n", GREEN, "\u2191", RESET);
+	else if (ft_strcmp(cmd, "rr") == 0)
+		ft_printf("%s%14s%14s%s\n", GREEN, "\u2191", "\u2191", RESET);
+	else if (ft_strcmp(cmd, "rra") == 0)
+		ft_printf("%s%14s%s\n", GREEN, "\u2193", RESET);
+	else if (ft_strcmp(cmd, "rrb") == 0)
+		ft_printf("%s%26s%s\n", GREEN, "\u2193", RESET);
+	else if (ft_strcmp(cmd, "rrr") == 0)
+		ft_printf("%s%14s%14s%s\n", GREEN, "\u2193", "\u2193", RESET);	
+	visualize(a, b, data);
+}
+
 void	visualize(t_stack *a, t_stack *b, t_psdata *data)
 {
-	ft_printf("move count: %d\n", data->move_count);
 	ft_printf("Stacks:\n");
 	while (!(a->next == NULL && b->next == NULL))
 	{
@@ -57,14 +89,10 @@ void	visualize(t_stack *a, t_stack *b, t_psdata *data)
 			ft_printf("%12c", ' ');
 		if (b->next != NULL)
 		{
-			if (b->value == data->sec_min_b)
-				ft_printf("%s%12d%s", BLUE, b->value, RESET);
-			else if (b->value == data->min_b)
+			if (b->value == data->min_b)
 				ft_printf("%s%12d%s", GREEN, b->value, RESET);
-			else if (b->value == data->sec_max_b)
-				ft_printf("%s%12d%s", YELLOW, b->value, RESET);
 			else if (b->value == data->max_b)
-				ft_printf("%s%12d%s", RED, b->value, RESET);
+				ft_printf("%s%12d%s", YELLOW, b->value, RESET);
 			else
 				ft_printf("%12d", b->value);
 			b = b->next;

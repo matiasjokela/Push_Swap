@@ -22,13 +22,6 @@ void	sort_small(t_stack **a, t_stack **b, t_psdata *data)
 	sort_three(a, b, data);
 	while ((*b)->next != NULL)
 		push_max_b(a, b, data);
-
-	
-
-
-	
-
-
 }
 
 void	get_values(t_stack *a, int *min, int *mid, int *max)

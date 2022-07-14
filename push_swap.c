@@ -35,7 +35,7 @@ int		main(int argc, char **argv)
 		ft_printf("NOT SORTED!!\n");
 	ft_printf("node count: %d\n", data->stack_depth_a);
 	ft_printf("move count: %d\n", data->move_count);
-	
+
 
 	
 }

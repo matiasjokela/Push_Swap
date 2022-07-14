@@ -28,19 +28,7 @@ void	read_input(t_stack *stack_a, int argc, char **argv, t_psdata *data)
 	
 }
 
-void	check_flags(char **argv, t_psdata *data, int *i)
-{
-	if (ft_strcmp(argv[1], "-v") == 0)
-	{
-		data->v_flag = 1;
-		*i = 2;
-	}
-	else if (ft_strcmp(argv[1], "-c") == 0)
-	{
-		data->c_flag = 1;
-		*i = 2;
-	}
-}
+
 
 void	read_values(t_stack **stack_a, char *str, t_psdata *data)
 {
@@ -90,25 +78,5 @@ long long	ps_atoi(char *str, int *i)
 	return (sign * value);
 }
 
-void	check_duplicates(t_stack *a)
-{
-	t_stack	*tmp;
-	t_stack	*current;
-	int		value;
 
-	tmp = a;
-	current = a;
-	while (current->next != 0)
-	{
-		value = current->value;
-		while (tmp->next != NULL)
-		{
-			if (tmp->value == value && current != tmp)
-				print_error();
-			tmp = tmp->next;
-		}
-		current = current->next;
-		tmp = a;
-	}
-}
 

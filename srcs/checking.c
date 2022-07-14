@@ -1,0 +1,54 @@
+
+
+
+#include "../includes/push_swap.h"
+
+int	is_sorted(t_stack *stack)
+{
+	int	tmp;
+
+	while (stack->next->next != NULL)
+	{
+		tmp = stack->value;
+		stack = stack->next;
+		if (tmp > stack->value)
+			return (0);
+	}
+	return (1);
+}
+
+void	check_duplicates(t_stack *a)
+{
+	t_stack	*tmp;
+	t_stack	*current;
+	int		value;
+
+	tmp = a;
+	current = a;
+	while (current->next != 0)
+	{
+		value = current->value;
+		while (tmp->next != NULL)
+		{
+			if (tmp->value == value && current != tmp)
+				print_error();
+			tmp = tmp->next;
+		}
+		current = current->next;
+		tmp = a;
+	}
+}
+
+void	check_flags(char **argv, t_psdata *data, int *i)
+{
+	if (ft_strcmp(argv[1], "-v") == 0)
+	{
+		data->v_flag = 1;
+		*i = 2;
+	}
+	else if (ft_strcmp(argv[1], "-c") == 0)
+	{
+		data->c_flag = 1;
+		*i = 2;
+	}
+}

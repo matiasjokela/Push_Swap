@@ -28,11 +28,6 @@ typedef struct s_psdata
 	int		c_flag;
 	int		stack_depth_a;
 	int		stack_depth_b;
-	//int		b_min;
-	//int		d_to_min;
-	//int		b_max;
-	//int		d_to_max;
-	//int		a_floor;
 	int		min_b;
 	int		max_b;
 	int		sec_min_b;
@@ -75,7 +70,6 @@ void		rr(t_stack **a, t_stack **b, t_psdata *data, int print);
 void		rra(t_stack **a, t_stack **b, t_psdata *data, int print);
 void		rrb(t_stack **a, t_stack **b, t_psdata *data, int print);
 void		rrr(t_stack **a, t_stack **b, t_psdata *data, int print);
-void		bubble_sort(t_stack **a, t_stack **b, t_psdata *data);
 void		push_next(t_stack **a, t_stack **b, t_psdata *data);
 void		push_min(t_stack **a, t_stack **b, t_psdata *data);
 void		push_max(t_stack **a, t_stack **b, t_psdata *data);
@@ -87,6 +81,7 @@ void		get_values(t_stack *a, int *min, int *mid, int *max);
 void		sort_three(t_stack **a, t_stack **b, t_psdata *data);
 void		visualize(t_stack *a, t_stack *b, t_psdata *data);
 void		execute_commands(t_stack **a, t_stack **b, t_psdata *data);
+void		print_colours(t_stack *a, t_stack *b, t_psdata *data, char *cmd);
 
 
 
