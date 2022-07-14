@@ -29,14 +29,6 @@ void	solve_stacks(t_stack **a, t_stack **b, t_psdata *data)
 		rra(a, b, data, 1);
 }
 
-
-
-
-
-
-
-
-
 void	push_max_b(t_stack **a, t_stack **b, t_psdata *data)
 {
 	max_b((*b), data);

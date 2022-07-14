@@ -44,11 +44,6 @@ void	print_error(void)
 
 void	print_colours(t_stack *a, t_stack *b, t_psdata *data, char *cmd)
 {
-	// 	char	*up = "\u2191";
-	// char	*down = "\u2193";
-	// char	*left = "\u2190";
-	// char	*right = "\u2192";
-	// char	*swap2 = "\u21c5";
 	sleep(1);
 	if (ft_strcmp(cmd, "sa") == 0)
 		ft_printf("%s%14s%s\n", GREEN, "\u21c5", RESET);

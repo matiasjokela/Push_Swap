@@ -37,7 +37,6 @@ void	get_segments(t_stack *stack_a, t_psdata *data, int seg_count)
 			tmp->segment = i;
 		marked++;
 		j++;
-
 	}
 }
 

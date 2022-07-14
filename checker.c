@@ -29,7 +29,6 @@ int main(int argc, char **argv)
 	init_data(data);
 	read_input(stack_a, argc, argv, data);
 	execute_commands(&stack_a, &stack_b, data);
-	print_stacks(stack_a, stack_b);
 	if (is_sorted(stack_a))
 		ft_printf("OK\n");
 	else

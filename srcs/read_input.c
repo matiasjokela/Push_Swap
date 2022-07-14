@@ -28,8 +28,6 @@ void	read_input(t_stack *stack_a, int argc, char **argv, t_psdata *data)
 	
 }
 
-
-
 void	read_values(t_stack **stack_a, char *str, t_psdata *data)
 {
 	int			i;
@@ -77,6 +75,3 @@ long long	ps_atoi(char *str, int *i)
 		return (2147483648);
 	return (sign * value);
 }
-
-
-
