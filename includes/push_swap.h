@@ -38,6 +38,9 @@ typedef struct s_psdata
 	int		rot_needed;
 	char	min_or_max;
 	int		global_min;
+	int		seg_count;
+	int		min_seg;
+	int		max_seg;
 	int		move_count;
 }			t_psdata;
 
@@ -74,7 +77,7 @@ void		push_next(t_stack **a, t_stack **b, t_psdata *data);
 void		push_min(t_stack **a, t_stack **b, t_psdata *data);
 void		push_max(t_stack **a, t_stack **b, t_psdata *data);
 void		get_segments(t_stack *stack_a, t_psdata *data, int seg_count);
-void		push_segments(t_stack **a, t_stack **b, t_psdata *data, int sc);
+void		push_segments(t_stack **a, t_stack **b, t_psdata *data);
 void		push_max_b(t_stack **a, t_stack **b, t_psdata *data);
 void		sort_small(t_stack **a, t_stack **b, t_psdata *data);
 void		get_values(t_stack *a, int *min, int *mid, int *max);
@@ -82,7 +85,7 @@ void		sort_three(t_stack **a, t_stack **b, t_psdata *data);
 void		visualize(t_stack *a, t_stack *b, t_psdata *data);
 void		execute_commands(t_stack **a, t_stack **b, t_psdata *data);
 void		print_colours(t_stack *a, t_stack *b, t_psdata *data, char *cmd);
-
-
+void		check_line(t_stack **a, t_stack **b, t_psdata *data, char *line);
+void		push_next_segments(t_stack **a, t_stack **b, t_psdata *data, int j);
 
 #endif

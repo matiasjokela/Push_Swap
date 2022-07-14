@@ -46,30 +46,35 @@ void	execute_commands(t_stack **a, t_stack **b, t_psdata *data)
 	while (ret)
 	{
 		ret = get_next_line(0, &line);
-		if (ft_strcmp(line, "sa") == 0)
-			sa(*a, *b, data, 0);
-		else if (ft_strcmp(line, "sb") == 0)
-			sb(*a, *b, data, 0);
-		else if (ft_strcmp(line, "ss") == 0)
-			ss(*a, *b, data, 0);
-		else if (ft_strcmp(line, "pa") == 0)
-			pa(a, b, data, 0);
-		else if (ft_strcmp(line, "pb") == 0)
-			pb(a, b, data, 0);
-		else if (ft_strcmp(line, "ra") == 0)
-			ra(a, b, data, 0);
-		else if (ft_strcmp(line, "rb") == 0)
-			rb(a, b, data, 0);
-		else if (ft_strcmp(line, "rr") == 0)
-			rr(a, b, data, 0);
-		else if (ft_strcmp(line, "rra") == 0)
-			rra(a, b, data, 0);
-		else if (ft_strcmp(line, "rrb") == 0)
-			rrb(a, b, data, 0);
-		else if (ft_strcmp(line, "rrr") == 0)
-			rrr(a, b, data, 0);
-		else if (ft_strcmp(line, "Error") == 0)
-			print_error();
+		check_line(a, b, data, line);
 	}
 	free(line);
+}
+
+void	check_line(t_stack **a, t_stack **b, t_psdata *data, char *line)
+{
+	if (ft_strcmp(line, "sa") == 0)
+		sa(*a, *b, data, 0);
+	else if (ft_strcmp(line, "sb") == 0)
+		sb(*a, *b, data, 0);
+	else if (ft_strcmp(line, "ss") == 0)
+		ss(*a, *b, data, 0);
+	else if (ft_strcmp(line, "pa") == 0)
+		pa(a, b, data, 0);
+	else if (ft_strcmp(line, "pb") == 0)
+		pb(a, b, data, 0);
+	else if (ft_strcmp(line, "ra") == 0)
+		ra(a, b, data, 0);
+	else if (ft_strcmp(line, "rb") == 0)
+		rb(a, b, data, 0);
+	else if (ft_strcmp(line, "rr") == 0)
+		rr(a, b, data, 0);
+	else if (ft_strcmp(line, "rra") == 0)
+		rra(a, b, data, 0);
+	else if (ft_strcmp(line, "rrb") == 0)
+		rrb(a, b, data, 0);
+	else if (ft_strcmp(line, "rrr") == 0)
+		rrr(a, b, data, 0);
+	else if (ft_strcmp(line, "Error") == 0)
+		print_error();
 }

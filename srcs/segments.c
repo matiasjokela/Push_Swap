@@ -40,43 +40,43 @@ void	get_segments(t_stack *stack_a, t_psdata *data, int seg_count)
 	}
 }
 
-void	push_segments(t_stack **a, t_stack **b, t_psdata *data, int sc)
+void	push_segments(t_stack **a, t_stack **b, t_psdata *data)
+{
+	data->min_seg = ((data->seg_count / 2) - 1);
+	data->max_seg = ((data->seg_count / 2) + 2);
+	while (data->min_seg > 0)
+	{
+		push_next_segments(a, b, data, data->stack_depth_a);
+		data->min_seg -= 2;
+		data->max_seg += 2;
+	}
+}
+
+void	push_next_segments(t_stack **a, t_stack **b, t_psdata *data, int j)
 {
 	int	i;
-	int	j;
-	int	min_seg;
-	int	max_seg;
-	int	mid_seg;
 
-
-	mid_seg = sc / 2;
-	min_seg = (mid_seg - 1);
-	max_seg = (mid_seg + 2);
-	while (min_seg > 0)
+	i = 0;
+	while (i++ < j)
 	{
-		i = 0;
-		j = data->stack_depth_a;
-		while (i++ < j)
+		if ((*a)->segment >= data->min_seg && (*a)->segment <= data->max_seg)
 		{
-			if ((*a)->segment >= min_seg && (*a)->segment <= max_seg)
+			pb(a, b, data, 1);
+			if ((*b)->segment == (data->min_seg + 1) || \
+			(*b)->segment == (data->max_seg - 1))
 			{
-				pb(a, b, data, 1);
-				if ((*b)->segment == (min_seg + 1) || (*b)->segment == (max_seg - 1))
+				if ((*a)->segment >= data->min_seg && \
+				(*a)->segment <= data->max_seg)
+					rb(a, b, data, 1);
+				else
 				{
-					if ((*a)->segment >= min_seg && (*a)->segment <= max_seg)
-						rb(a, b, data, 1);
-					else
-					{
-						rr(a, b, data, 1);
-						i++;
-					}
+					rr(a, b, data, 1);
+					i++;
 				}
 			}
-		else
-			ra(a, b, data, 1);
 		}
-		min_seg -= 2;
-		max_seg += 2;
+	else
+		ra(a, b, data, 1);
 	}
 }
 
