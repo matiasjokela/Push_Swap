@@ -18,7 +18,6 @@ int main(int argc, char **argv)
 	t_stack		*stack_b;
 	t_psdata	*data;
 
-
 	if (argc == 1)
 		return (1);
 	stack_a = new_node(0);
@@ -29,7 +28,7 @@ int main(int argc, char **argv)
 	init_data(data);
 	read_input(stack_a, argc, argv, data);
 	execute_commands(&stack_a, &stack_b, data);
-	if (is_sorted(stack_a))
+	if (is_sorted(stack_a) && stack_b->next == NULL)
 		ft_printf("OK\n");
 	else
 		ft_printf("KO\n");
@@ -42,11 +41,11 @@ void	execute_commands(t_stack **a, t_stack **b, t_psdata *data)
 	int		ret;
 
 	line = (char *)malloc(sizeof(char) * 500);
-	ret = 1;
+	ret = get_next_line(0, &line);
 	while (ret)
 	{
-		ret = get_next_line(0, &line);
 		check_line(a, b, data, line);
+		ret = get_next_line(0, &line);
 	}
 	free(line);
 }
@@ -75,6 +74,6 @@ void	check_line(t_stack **a, t_stack **b, t_psdata *data, char *line)
 		rrb(a, b, data, 0);
 	else if (ft_strcmp(line, "rrr") == 0)
 		rrr(a, b, data, 0);
-	else if (ft_strcmp(line, "Error") == 0)
+	else
 		print_error();
 }

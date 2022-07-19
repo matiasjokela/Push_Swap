@@ -65,7 +65,7 @@ long long	ps_atoi(char *str, int *i)
 	while (str[*i] != '\0' && str[*i] >= '0' && str[*i] <= '9')
 	{
 		value = value * 10 + str[*i] - '0';
-		if (value  > 2147483647)
+		if (value  > 2147483648)
 			return (2147483648);
 		*i += 1;
 	}
