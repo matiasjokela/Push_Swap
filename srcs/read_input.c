@@ -25,7 +25,6 @@ void	read_input(t_stack *stack_a, int argc, char **argv, t_psdata *data)
 		read_values(&stack_a, argv[i++], data);
 	stack_a = tmp;
 	check_duplicates(stack_a);
-	
 }
 
 void	read_values(t_stack **stack_a, char *str, t_psdata *data)
@@ -65,7 +64,7 @@ long long	ps_atoi(char *str, int *i)
 	while (str[*i] != '\0' && str[*i] >= '0' && str[*i] <= '9')
 	{
 		value = value * 10 + str[*i] - '0';
-		if (value  > 2147483648)
+		if (value > 2147483648)
 			return (2147483648);
 		*i += 1;
 	}

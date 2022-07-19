@@ -12,8 +12,7 @@
 
 #include "includes/push_swap.h"
 
-
-int		main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_stack		*stack_a;
 	t_stack		*stack_b;
@@ -30,4 +29,3 @@ int		main(int argc, char **argv)
 	read_input(stack_a, argc, argv, data);
 	solve_stacks(&stack_a, &stack_b, data);
 }
-

@@ -1,4 +1,14 @@
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   segments.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mjokela <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/19 16:57:10 by mjokela           #+#    #+#             */
+/*   Updated: 2022/07/19 16:57:15 by mjokela          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
@@ -33,7 +43,7 @@ void	get_segments(t_stack *stack_a, t_psdata *data, int seg_count)
 
 int	get_next_min(t_stack *tmp)
 {
-	int min;
+	int	min;
 
 	min = 2147483647;
 	while (tmp->next != NULL)
@@ -80,8 +90,7 @@ void	push_next_segments(t_stack **a, t_stack **b, t_psdata *data, int j)
 				}
 			}
 		}
-	else
-		ra(a, b, data, 1);
+		else
+			ra(a, b, data, 1);
 	}
 }
-

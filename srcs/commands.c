@@ -54,7 +54,7 @@ void	rotate(t_stack **stack)
 void	rev_rotate(t_stack **stack)
 {
 	t_stack	*tmp;
-	t_stack *head;
+	t_stack	*head;
 
 	if ((*stack)->next == NULL || (*stack)->next->next == NULL)
 		return ;

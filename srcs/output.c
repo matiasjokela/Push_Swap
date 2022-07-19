@@ -66,7 +66,7 @@ void	print_colours(t_stack *a, t_stack *b, t_psdata *data, char *cmd)
 	else if (ft_strcmp(cmd, "rrb") == 0)
 		ft_printf("%s%26s%s\n", GREEN, "\u2193", RESET);
 	else if (ft_strcmp(cmd, "rrr") == 0)
-		ft_printf("%s%14s%14s%s\n", GREEN, "\u2193", "\u2193", RESET);	
+		ft_printf("%s%14s%14s%s\n", GREEN, "\u2193", "\u2193", RESET);
 	visualize(a, b, data);
 }
 

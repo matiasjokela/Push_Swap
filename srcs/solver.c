@@ -1,4 +1,14 @@
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   solver.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mjokela <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/19 16:57:26 by mjokela           #+#    #+#             */
+/*   Updated: 2022/07/19 16:57:31 by mjokela          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
@@ -47,7 +57,6 @@ void	push_max_b(t_stack **a, t_stack **b, t_psdata *data)
 	if ((*a)->value > (*a)->next->value)
 		sa(*a, *b, data, 1);
 }
-
 
 void	push_next(t_stack **a, t_stack **b, t_psdata *data)
 {
@@ -114,4 +123,3 @@ void	push_max(t_stack **a, t_stack **b, t_psdata *data)
 	if ((*a)->value > (*a)->next->value)
 		sa(*a, *b, data, 1);
 }
-
