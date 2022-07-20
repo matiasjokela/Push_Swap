@@ -28,7 +28,7 @@ int	main(int argc, char **argv)
 	init_data(data);
 	read_input(stack_a, argc, argv, data);
 	execute_commands(&stack_a, &stack_b, data);
-	if (is_sorted(stack_a) && stack_b->next == NULL)
+	if (stack_b->next == NULL && is_sorted(stack_a))
 		ft_printf("OK\n");
 	else
 		ft_printf("KO\n");
@@ -41,6 +41,8 @@ void	execute_commands(t_stack **a, t_stack **b, t_psdata *data)
 	int		ret;
 
 	line = (char *)malloc(sizeof(char) * 500);
+	if (line == NULL)
+		exit (1);
 	ret = get_next_line(0, &line);
 	while (ret)
 	{
