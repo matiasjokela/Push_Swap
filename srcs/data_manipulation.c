@@ -34,3 +34,22 @@ t_stack	*new_node(int nbr)
 	node->next = NULL;
 	return (node);
 }
+
+
+void	free_all(t_stack *a, t_stack *b, t_psdata *data)
+{
+	free_stack(a);
+	free_stack(b);
+	free(data);
+}
+
+void	free_stack(t_stack *stack)
+{
+	if (stack->next == NULL)
+	{
+		free(stack);
+		return ;
+	}
+	free_stack(stack->next);
+	free(stack);
+}

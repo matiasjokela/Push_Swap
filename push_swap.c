@@ -28,5 +28,6 @@ int	main(int argc, char **argv)
 	init_data(data);
 	read_input(stack_a, argc, argv, data);
 	solve_stacks(&stack_a, &stack_b, data);
+	free_all(stack_a, stack_b, data);
 	return (0);
 }

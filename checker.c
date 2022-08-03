@@ -32,22 +32,21 @@ int	main(int argc, char **argv)
 		ft_printf("OK\n");
 	else
 		ft_printf("KO\n");
+	free_all(stack_a, stack_b, data);
 	return (0);
 }
 
 void	execute_commands(t_stack **a, t_stack **b, t_psdata *data)
 {
 	char	*line;
-	int		ret;
 
-	line = (char *)malloc(sizeof(char) * 500);
-	if (line == NULL)
-		exit (1);
-	ret = get_next_line(0, &line);
-	while (ret)
+	while (1)
 	{
+		line = NULL;
+		if (get_next_line(0, &line) <= 0)
+			break ;
 		check_line(a, b, data, line);
-		ret = get_next_line(0, &line);
+		free(line);
 	}
 	free(line);
 }

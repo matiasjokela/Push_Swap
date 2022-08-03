@@ -89,5 +89,7 @@ void		print_colours(t_stack *a, t_stack *b, t_psdata *data, char *cmd);
 void		check_line(t_stack **a, t_stack **b, t_psdata *data, char *line);
 void		push_next_segments(t_stack **a, t_stack **b, t_psdata *data, int j);
 int			get_next_min(t_stack *tmp);
+void		free_all(t_stack *a, t_stack *b, t_psdata *data);
+void		free_stack(t_stack *stack);
 
 #endif
