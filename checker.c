@@ -38,17 +38,30 @@ int	main(int argc, char **argv)
 
 void	execute_commands(t_stack **a, t_stack **b, t_psdata *data)
 {
-	char	*line;
+	int		i;
+	char	line[500];
+	char	tmp[1];
 
-	while (1)
+	i = 0;
+	tmp[0] = '\0';
+	ft_bzero(line, 500);
+	while (read(0, tmp, 1) > 0)
 	{
-		line = NULL;
-		if (get_next_line(0, &line) <= 0)
-			break ;
-		check_line(a, b, data, line);
-		free(line);
+		if (tmp[0] == '\n')
+		{
+			check_line(a, b, data, line);
+			ft_bzero(line, 500);
+			i = 0;
+		}
+		else
+			line[i++] = tmp[0];
+		if (i == 499)
+		{
+			while (read(0, tmp, 1) > 0)
+				;
+			print_error();
+		}
 	}
-	free(line);
 }
 
 void	check_line(t_stack **a, t_stack **b, t_psdata *data, char *line)

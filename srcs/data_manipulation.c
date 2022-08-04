@@ -35,7 +35,6 @@ t_stack	*new_node(int nbr)
 	return (node);
 }
 
-
 void	free_all(t_stack *a, t_stack *b, t_psdata *data)
 {
 	free_stack(a);
