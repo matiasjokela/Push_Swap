@@ -12,6 +12,8 @@
 
 #include "../includes/push_swap.h"
 
+/*	Print current state of stacks a and b.
+	Called after each move if -v flag active */
 void	print_stacks(t_stack *a, t_stack *b)
 {
 	ft_printf("Stacks:\n");
@@ -36,12 +38,15 @@ void	print_stacks(t_stack *a, t_stack *b)
 	ft_printf("\n           A           B\n");
 }
 
+/* Print error message and exit with status code 1 */
 void	print_error(void)
 {
 	ft_printf("Error\n");
 	exit(1);
 }
 
+/*	Visualize commands by printing green arrows in the direction of the move.
+	Then print stacks after the move */
 void	print_colours(t_stack *a, t_stack *b, t_psdata *data, char *cmd)
 {
 	sleep(1);
@@ -70,6 +75,7 @@ void	print_colours(t_stack *a, t_stack *b, t_psdata *data, char *cmd)
 	visualize(a, b, data);
 }
 
+/* Print stacks and highlight min and max values in stack b by colouring them */
 void	visualize(t_stack *a, t_stack *b, t_psdata *data)
 {
 	ft_printf("Stacks:\n");

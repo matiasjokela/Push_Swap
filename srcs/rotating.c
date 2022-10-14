@@ -12,6 +12,7 @@
 
 #include "../includes/push_swap.h"
 
+/* Rotate stack a */
 void	ra(t_stack **a, t_stack **b, t_psdata *data, int print)
 {
 	rotate(a);
@@ -24,6 +25,7 @@ void	ra(t_stack **a, t_stack **b, t_psdata *data, int print)
 		print_colours(*a, *b, data, "ra");
 }
 
+/* Rotate stack b */
 void	rb(t_stack **a, t_stack **b, t_psdata *data, int print)
 {
 	rotate(b);
@@ -36,6 +38,7 @@ void	rb(t_stack **a, t_stack **b, t_psdata *data, int print)
 		print_colours(*a, *b, data, "rb");
 }
 
+/* Rotate stacks a and b */
 void	rr(t_stack **a, t_stack **b, t_psdata *data, int print)
 {
 	rotate(a);

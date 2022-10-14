@@ -12,6 +12,7 @@
 
 #include "../includes/push_swap.h"
 
+/* Check if stack is sorted */
 int	is_sorted(t_stack *stack)
 {
 	int	tmp;
@@ -26,6 +27,7 @@ int	is_sorted(t_stack *stack)
 	return (1);
 }
 
+/* Check for duplicates, print error message and exit if found */
 void	check_duplicates(t_stack *a)
 {
 	t_stack	*tmp;
@@ -48,6 +50,7 @@ void	check_duplicates(t_stack *a)
 	}
 }
 
+/* Check for flags fo the visualizer */
 void	check_flags(char **argv, t_psdata *data, int *i)
 {
 	if (ft_strcmp(argv[1], "-v") == 0)

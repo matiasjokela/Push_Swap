@@ -12,6 +12,10 @@
 
 #include "../includes/push_swap.h"
 
+/*	Loop through stack a until all nodes have a segment assigned to them.
+	On each iteration find the smallest value with no segment assigned
+	and assign it based on segment count and how many numbers have 
+	already been assigned to current segment */
 void	get_segments(t_stack *stack_a, t_psdata *data, int seg_count)
 {
 	t_stack	*tmp;
@@ -41,6 +45,7 @@ void	get_segments(t_stack *stack_a, t_psdata *data, int seg_count)
 	}
 }
 
+/* Get smallest value with unassigned segment from stack */
 int	get_next_min(t_stack *tmp)
 {
 	int	min;
@@ -55,6 +60,9 @@ int	get_next_min(t_stack *tmp)
 	return (min);
 }
 
+/*	Push four segments at a time from stack a to stack b starting from
+	the middle segments. Do this until all segments over 0 are pushed.
+	Segment 0 is for the three largest values, which are left in stack a */
 void	push_segments(t_stack **a, t_stack **b, t_psdata *data)
 {
 	data->min_seg = ((data->seg_count / 2) - 1);
@@ -67,6 +75,9 @@ void	push_segments(t_stack **a, t_stack **b, t_psdata *data)
 	}
 }
 
+/*	Loop through stack a once and push to stack b all nodes whose segment
+	is between min_seg and max_seg inclusive. Leave min_seg and max_seg
+	on top of stack b and rotate the other two to the bottom */
 void	push_next_segments(t_stack **a, t_stack **b, t_psdata *data, int j)
 {
 	int	i;

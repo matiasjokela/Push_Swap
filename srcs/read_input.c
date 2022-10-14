@@ -12,6 +12,9 @@
 
 #include "../includes/push_swap.h"
 
+/* 	First check if flags are given.
+	Next loop command line arguments as long as there are some.
+	Pass the string to read_values. Finally check for duplicate values */
 void	read_input(t_stack *stack_a, int argc, char **argv, t_psdata *data)
 {
 	int		i;
@@ -27,6 +30,9 @@ void	read_input(t_stack *stack_a, int argc, char **argv, t_psdata *data)
 	check_duplicates(stack_a);
 }
 
+/*	Convert string received as argument to an int. If value is invalid,
+	print error message and exit. Otherwise create a new node with that value
+	and add it to stack a */
 void	read_values(t_stack **stack_a, char *str, t_psdata *data)
 {
 	int			i;
@@ -46,6 +52,7 @@ void	read_values(t_stack **stack_a, char *str, t_psdata *data)
 	}
 }
 
+/* Convert string to int. If the result is not an int, return max_int + 1 */
 long long	ps_atoi(char *str, int *i)
 {
 	long long	value;

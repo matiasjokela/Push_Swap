@@ -12,6 +12,11 @@
 
 #include "includes/push_swap.h"
 
+/*	Allocate space for stacks and data, and initialize that data.
+	Read input from command line to stack a and execute commands given from
+	stdin to that stack. Check if the execution of those commands leads
+	to an empty stack b and a sorted stack a. Print OK if it does and KO if
+	it doesn't. Finally, free all allocated memory */
 int	main(int argc, char **argv)
 {
 	t_stack		*stack_a;
@@ -36,6 +41,8 @@ int	main(int argc, char **argv)
 	return (0);
 }
 
+/*	Read commands from stdin until there are no more commands.
+	Dispatch each line found to check_line */
 void	execute_commands(t_stack **a, t_stack **b, t_psdata *data)
 {
 	int		i;
@@ -64,6 +71,8 @@ void	execute_commands(t_stack **a, t_stack **b, t_psdata *data)
 	}
 }
 
+/*	Check if line given as input is a valid command. If it is, execute
+	that command on the stacks. Otherwise print error and exit */
 void	check_line(t_stack **a, t_stack **b, t_psdata *data, char *line)
 {
 	if (ft_strcmp(line, "sa") == 0)

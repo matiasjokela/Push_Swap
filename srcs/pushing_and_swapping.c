@@ -12,6 +12,7 @@
 
 #include "../includes/push_swap.h"
 
+/* Swap first two elements in stack a */
 void	sa(t_stack *a, t_stack *b, t_psdata *data, int print)
 {
 	swap(a);
@@ -24,6 +25,7 @@ void	sa(t_stack *a, t_stack *b, t_psdata *data, int print)
 		print_colours(a, b, data, "sa");
 }
 
+/* Swap first two elements in stack b */
 void	sb(t_stack *a, t_stack *b, t_psdata *data, int print)
 {
 	swap(b);
@@ -36,6 +38,7 @@ void	sb(t_stack *a, t_stack *b, t_psdata *data, int print)
 		print_colours(a, b, data, "sb");
 }
 
+/* Swap first two elements in both stacks a and b */
 void	ss(t_stack *a, t_stack *b, t_psdata *data, int print)
 {
 	swap(a);
@@ -49,6 +52,7 @@ void	ss(t_stack *a, t_stack *b, t_psdata *data, int print)
 		print_colours(a, b, data, "ss");
 }
 
+/* Push first element from stack b to stack a */
 void	pa(t_stack **a, t_stack **b, t_psdata *data, int print)
 {
 	push(b, a);
@@ -63,6 +67,7 @@ void	pa(t_stack **a, t_stack **b, t_psdata *data, int print)
 		print_colours(*a, *b, data, "pa");
 }
 
+/* Push first element from stack a to stack b */
 void	pb(t_stack **a, t_stack **b, t_psdata *data, int print)
 {
 	push(a, b);

@@ -12,6 +12,7 @@
 
 #include "../includes/push_swap.h"
 
+/* Initialize data struct values */
 void	init_data(t_psdata *data)
 {
 	data->v_flag = 0;
@@ -22,6 +23,7 @@ void	init_data(t_psdata *data)
 	data->marked = 0;
 }
 
+/* Create a new node for a stack */
 t_stack	*new_node(int nbr)
 {
 	t_stack	*node;
@@ -35,6 +37,7 @@ t_stack	*new_node(int nbr)
 	return (node);
 }
 
+/* Free all allocated memory */
 void	free_all(t_stack *a, t_stack *b, t_psdata *data)
 {
 	free_stack(a);
@@ -42,6 +45,7 @@ void	free_all(t_stack *a, t_stack *b, t_psdata *data)
 	free(data);
 }
 
+/* Recursively free a stack */
 void	free_stack(t_stack *stack)
 {
 	if (stack->next == NULL)

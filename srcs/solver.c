@@ -12,6 +12,14 @@
 
 #include "../includes/push_swap.h"
 
+/*	Do nothing if stack a is already sorted. If not then set segment count
+	based on the amount of numbers to be sorted. If this is less than 60,
+	use a separate sort_small algorithm. Otherwise get and push segments
+	to stack b based on segment count. After this sort the remaining
+	three numbers in stack a and store minimum value from stack b.
+	Use minimax to push either smallest or largest number from stack b to
+	stack a depending on which requires fewer moves. Do this until stack b is
+	empty. Finally loop stack a so that the smallest value is first */
 void	solve_stacks(t_stack **a, t_stack **b, t_psdata *data)
 {
 	if (is_sorted(*a))
@@ -37,6 +45,10 @@ void	solve_stacks(t_stack **a, t_stack **b, t_psdata *data)
 		rra(a, b, data, 1);
 }
 
+/*	Rotate stack b until max value is found. Use the direction that
+	requires fewer moves. Push that value to stack a. If second highest
+	value is found on the way to highest value, push that too and then 
+	swap them in stack a after pushing the highest value */
 void	push_max_b(t_stack **a, t_stack **b, t_psdata *data)
 {
 	max_b((*b), data);
@@ -58,6 +70,9 @@ void	push_max_b(t_stack **a, t_stack **b, t_psdata *data)
 		sa(*a, *b, data, 1);
 }
 
+/*	Determine whether it is optimal to push min or max value and the 
+	direction stack b should rotated. Dispatch to push_min or push_max
+	based on that information */
 void	push_next(t_stack **a, t_stack **b, t_psdata *data)
 {
 	data->rot_dir = 1;
@@ -85,6 +100,10 @@ void	push_next(t_stack **a, t_stack **b, t_psdata *data)
 		push_max(a, b, data);
 }
 
+/*	Rotate stack b until min value is found. Use the direction that
+	requires fewer moves. Push that value to stack a. If second lowest
+	value is found on the way to lowest value, push that too. Rotate values
+	to the bottom of stack a */
 void	push_min(t_stack **a, t_stack **b, t_psdata *data)
 {
 	int	pushed_sec;
@@ -108,6 +127,10 @@ void	push_min(t_stack **a, t_stack **b, t_psdata *data)
 	ra(a, b, data, 1);
 }
 
+/*	Rotate stack b until max value is found. Use the direction that
+	requires fewer moves. Push that value to stack a. If second highest
+	value is found on the way to highest value, push that too and then 
+	swap them in stack a after pushing the highest value */
 void	push_max(t_stack **a, t_stack **b, t_psdata *data)
 {
 	while ((*b)->value != data->max_b)

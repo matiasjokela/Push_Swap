@@ -12,6 +12,7 @@
 
 #include "../includes/push_swap.h"
 
+/* Reverse rotate stack a */
 void	rra(t_stack **a, t_stack **b, t_psdata *data, int print)
 {
 	rev_rotate(a);
@@ -24,6 +25,7 @@ void	rra(t_stack **a, t_stack **b, t_psdata *data, int print)
 		print_colours(*a, *b, data, "rra");
 }
 
+/* Reverse rotate stack b */
 void	rrb(t_stack **a, t_stack **b, t_psdata *data, int print)
 {
 	rev_rotate(b);
@@ -36,6 +38,7 @@ void	rrb(t_stack **a, t_stack **b, t_psdata *data, int print)
 		print_colours(*a, *b, data, "rrb");
 }
 
+/* Reverse rotate stacks a and b */
 void	rrr(t_stack **a, t_stack **b, t_psdata *data, int print)
 {
 	rev_rotate(a);

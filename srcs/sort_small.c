@@ -12,6 +12,10 @@
 
 #include "../includes/push_swap.h"
 
+/*	Do nothing if there is only one number. Swap if necessary in case there are
+	two. Otherwise push all numbers to stack b except for the highest three.
+	Then use sort_three to sort those numbers and push the highest number
+	left in stack b back to stack a until stack b is empty */
 void	sort_small(t_stack **a, t_stack **b, t_psdata *data)
 {
 	if (data->stack_depth_a == 1)
@@ -34,6 +38,7 @@ void	sort_small(t_stack **a, t_stack **b, t_psdata *data)
 		push_max_b(a, b, data);
 }
 
+/* Get min, mid and max values from a stack of three numbers. */
 void	get_values(t_stack *a, int *min, int *mid, int *max)
 {
 	t_stack	*tmp;
@@ -59,6 +64,9 @@ void	get_values(t_stack *a, int *min, int *mid, int *max)
 	}
 }
 
+/*	Get min, mid and max values from a stack of three numbers.
+	Use the information to order them in optimal way based on the six
+	possible move combinations (including doing nothing) */
 void	sort_three(t_stack **a, t_stack **b, t_psdata *data)
 {
 	int	min;

@@ -12,6 +12,8 @@
 
 #include "../includes/push_swap.h"
 
+/*	Find smallest and second smallest values in stack b.
+	Store them in data struct */
 void	min_b(t_stack *b, t_psdata *data)
 {
 	int		i;
@@ -40,6 +42,8 @@ void	min_b(t_stack *b, t_psdata *data)
 	}
 }
 
+/*	Find largest and second largest values in stack b.
+	Store them in data struct */
 void	max_b(t_stack *b, t_psdata *data)
 {
 	int		i;

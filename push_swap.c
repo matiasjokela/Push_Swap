@@ -12,6 +12,9 @@
 
 #include "includes/push_swap.h"
 
+/*	Allocate space for stacks and data, and initialize that data. Then 
+	read input from command line to stack a. Call solve_stacks to sort stack a
+	and print instructions. Finally, free all allocated memory and return 0 */
 int	main(int argc, char **argv)
 {
 	t_stack		*stack_a;

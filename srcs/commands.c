@@ -12,6 +12,7 @@
 
 #include "../includes/push_swap.h"
 
+/* Swap first two elements of a stack, do nothing if fewer than two elements */
 void	swap(t_stack *stack)
 {
 	int	tmp;
@@ -23,6 +24,7 @@ void	swap(t_stack *stack)
 	stack->next->value = tmp;
 }
 
+/* Push first element from stack src to stack dst, do nothing if src is empty */
 void	push(t_stack **src, t_stack **dst)
 {
 	t_stack	*tmp;
@@ -35,6 +37,8 @@ void	push(t_stack **src, t_stack **dst)
 	*src = tmp;
 }
 
+/*	Shift up all elements in a stack, first becomes last.
+	Do nothing if fewer than two elements */
 void	rotate(t_stack **stack)
 {
 	t_stack	*tmp;
@@ -51,6 +55,8 @@ void	rotate(t_stack **stack)
 	(*stack) = head;
 }
 
+/*	Shift down all elements in a stack, last becomes first.
+	Do nothing if fewer than two elements */
 void	rev_rotate(t_stack **stack)
 {
 	t_stack	*tmp;
