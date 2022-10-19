@@ -30,5 +30,5 @@ Checker is a validator program for push_swap and it's job is simply to check tha
 
 ### Some examples
 
-
+![](./examples/correct1.png)
 
