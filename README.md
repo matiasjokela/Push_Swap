@@ -29,14 +29,5 @@ Push_swap is the program that does the heavy lifting. It's job sort the numbers 
 Checker is a validator program for push_swap and it's job is simply to check that the set of instructions push_swap generates actually results in a properly sorted stack. It does this by listening for commands on stdin and applying them to the stacks. If any of the commands it receives is invalid, it must print an error message and stop. Otherwise after there are no more commands, it checks that stack b is empty and that stack a is sorted correctly. If this is the case, it prints OK, otherwise it prints KO.
 
 ### Some examples
-![](./examples/error1.png)
 
-![](./examples/error2.png)
-
-![](./examples/correct1.png)
-
-![](./examples/correct2.png)
-
-![](./examples/incorrect.png)
-
-![](./examples/visual.png)
+![examples](./examples/example.png)
