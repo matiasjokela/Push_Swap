@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Push_swap is a project in the algorithms branch of [Hive Helsinki](https://www.hive.fi/en/). It's object is to write a sorting algorithm which sorts a set of integers as efficiently as possible. The twist is that there are rules limiting how memory can be used and how data can be manipulated, which renders most standard sorting algorithms invalid for this task, and forces the programmer to be creative when solving this problem. Below is a summary of these rules and the game logic followed by a description of my solution to the problem. The full assignment pdf can be found [here](https://www.hive.fi/en/)
+Push_swap is a project in the algorithms branch of [Hive Helsinki](https://www.hive.fi/en/). It's object is to write a sorting algorithm which sorts a set of integers as efficiently as possible. The twist is that there are rules limiting how memory can be used and how data can be manipulated, which renders most standard sorting algorithms invalid for this task, and forces the programmer to be creative when solving this problem. Below is a summary of these rules and the game logic followed by a description of my solution to the problem. The full assignment pdf can be found [here](https://github.com/matiasjokela/Push_Swap/blob/master/push_swap.en.pdf)
 
 ## The rules
 
