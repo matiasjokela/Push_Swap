@@ -34,7 +34,17 @@ Checker is a validator program for push_swap and it's job is simply to check tha
 
 ## The algorithm
 
-My solution to this problem is based on the idea that all numbers can first be pushed to stack b, and from there they can be pushed back to stack a one at a time in a way that results in a sorted stack a. I do this by searching for the min and max values from stack b, pushing the one that is closer, and rotating stack a if needed to keep the order correct. As such, the algorithm is not very efficient so I needed to find ways to optimize performance. The main optimization method is assigning segments to the numbers based on their relative value in the stack (e.g. segment 1 assigned for the ten smallest numbers etc.). This allows us to push the numbers to stack b in such a way that the min and max values are always relatively close to our current position, which makes a significant improvement in efficiency. A more detailed explanation of the algorithm is below.
+My solution to this problem is based on the idea that all numbers can first be pushed to stack b, and from there they can be pushed back to stack a one at a time in a way that results in a sorted stack a. I do this by searching for the min and max values from stack b, pushing the one that is closer, and rotating stack a if needed to keep the order correct. As such, the algorithm is not very efficient so I needed to find ways to optimize performance. The main optimization method is assigning segments to the numbers based on their relative value in the stack (e.g. segment 1 assigned for the ten smallest numbers etc.). This allows us to push the numbers to stack b in such a way that the min and max values will always be relatively close to our position in stack b once we start pushing them back to stack a, which has a significant effect in efficiency. 
+
+A different number of segments is used based on how many numbers need to be sorted, and the algorithm is also slightly different for stacks of under 60 numbers. This is to optimize performance for all different stack sizes. Below is a more detailed explanation of the steps involved. For the sake of simplicity, the given examples will assume that we begin with stack a having the numbers 1-123 in random order and stack b being empty.
 
 ### Segments
+
+![](./examples/start.png)
+
+![](./examples/get_segments.png)
+
+![](./examples/push_segments.png)
+
+![](./examples/end.png)
 
