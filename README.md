@@ -38,15 +38,22 @@ My solution to this problem is based on the idea that all numbers can first be p
 
 A different number of segments is used based on how many numbers need to be sorted, and the algorithm is also slightly different for stacks of under 60 numbers. This is to optimize performance for all different stack sizes. Below is a more detailed explanation of the steps involved. For the sake of simplicity, the given examples will assume that we begin with stack a having the numbers 1-123 in random order and stack b being empty.
 
+![start](./examples/start.png)
+
 ### Segments
 
-![](./examples/start.png)
+We begin by assigning the segments. This is done by looping through stack a until all numbers have a segment assigned to them. On each iteration the smallest unassigned number is assigned. For small stacks (<60 numbers), we use six segments. Medium stacks (60-200 numbers) are divided into 12 segments and big stacks (> 200 numbers) into 32 segments. In our example, the numbers are divided in to 12 segments with numbers 1-10 getting seg 1 etc. The largest three numbers always get segment 0 for a reason we will come to later.
 
-![](./examples/get_segments.png)
+![get_segments](./examples/get_segments.png)
 
-![](./examples/push_segments.png)
+Having assigned the segments, it is time to push the to stack b. We iterate through stack a pushing four segments at a time starting from the middle and working our way to the edges. In our example we would first look for segments 5-8 and push when we find them. After pushing 6 or 7 we need to rotate this number to the bottom of stack b to keep the order. After this we do the same two more times to push the other segments. This way we end up with the largest and the smallest ten numbers on the to of stack b making it easier for us to find the min and max values once we start pushing them back to stack a. We leave the three largest values to stack a and sort them in place using a separate sort_three algorithm.
 
-![](./examples/end.png)
+In the case of small stacks it is not optimal to use up so many moves looping through stack a to use segments in this way since any number will be relatively close in stack b anyway. In these cases we pay now attention to the segments and only loop through stack a once pushing everything but the largest three numbers to stack b.
 
-![](./examples/test.png)
+![push_segments](./examples/push_segments.png)
+
+## Minimax
+
+![end](./examples/end.png)
+
 
