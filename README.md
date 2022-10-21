@@ -46,14 +46,26 @@ We begin by assigning the segments. This is done by looping through stack a unti
 
 ![get_segments](./examples/get_segments.png)
 
-Having assigned the segments, it is time to push the to stack b. We iterate through stack a pushing four segments at a time starting from the middle and working our way to the edges. In our example we would first look for segments 5-8 and push when we find them. After pushing 6 or 7 we need to rotate this number to the bottom of stack b to keep the order. After this we do the same two more times to push the other segments. This way we end up with the largest and the smallest ten numbers on the to of stack b making it easier for us to find the min and max values once we start pushing them back to stack a. We leave the three largest values to stack a and sort them in place using a separate sort_three algorithm.
 
-In the case of small stacks it is not optimal to use up so many moves looping through stack a to use segments in this way since any number will be relatively close in stack b anyway. In these cases we pay now attention to the segments and only loop through stack a once pushing everything but the largest three numbers to stack b.
+Having assigned the segments, it is time to push the to stack b. We iterate through stack a pushing four segments at a time starting from the middle and working our way to the edges. In our example we would first look for segments 5-8 and push when we find them. After pushing 6 or 7 we need to rotate this number to the bottom of stack b to keep the order. After this we do the same two more times to push the other segments. This way we end up with the largest and the smallest ten numbers on the to of stack b making it easier for us to find the min and max values once we start pushing them back to stack a. We leave the three largest values (segment 0) to stack a and sort them in place using a separate sort_three algorithm.
+
+In the case of small stacks it is not optimal to use up so many moves looping through stack a to use segments in this way since any number will be relatively close in stack b anyway. In these cases we pay no attention to the segments and only loop through stack a once pushing everything but the largest three numbers to stack b.
 
 ![push_segments](./examples/push_segments.png)
 
-## Minimax
+### Minimax
+
+Once this setup is in place, all that is left to do is to push the numbers back to stack a in the correct order.
+
+The algorithm works by finding the min and max values from stack b and calculating the shortest distance to both from the current position. It then chooses the one that is closer and starts rotating the stack towards it. As an added optimization, the second lowest and highest numbers are also recorded and they are pushed if they are found on the way to the lowest or highest number. If only the highest number was pushed, then nothing needs to be done to stack a at this point. Otherwise stack a is rotated or its first two values swapped so that the previously pushed highest number is on top and the numbers are in the correct order. This process is repeated until stack b is empty, after which stack a needs to be rotated until the smallest number is on top, and the sorting is done.
+
+Once again, sorting for small stacks works slightly differently to what is described above. For small stacks, it is sufficient to simply always push the highest number from stack b to stack a in each iteration. 
+
+
+
 
 ![end](./examples/end.png)
 
+
+## Conclusion
 
