@@ -31,3 +31,10 @@ Checker is a validator program for push_swap and it's job is simply to check tha
 ### Some examples
 
 ![examples](./examples/example.png)
+
+## The algorithm
+
+My solution to this problem is based on the idea that all numbers can first be pushed to stack b, and from there they can be pushed back to stack a one at a time in a way that results in a sorted stack a. I do this by searching for the min and max values from stack b, pushing the one that is closer, and rotating stack a if needed to keep the order correct. As such, the algorithm is not very efficient so I needed to find ways to optimize performance. The main optimization method is assigning segments to the numbers based on their relative value in the stack (e.g. segment 1 assigned for the ten smallest numbers etc.). This allows us to push the numbers to stack b in such a way that the min and max values are always relatively close to our current position, which makes a significant improvement in efficiency. A more detailed explanation of the algorithm is below.
+
+### Segments
+
