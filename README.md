@@ -89,3 +89,16 @@ I ran five test for stacks of both 100 and 500 random numbers. Number sets were 
 | 5 | 623 | 4792 |
 | Average | 609 | 4892 |
 
+The scoring system is as follows:
+
+| Grade | Move count (100 numbers) | Move count (500 numbers)|
+| :------:| :----------: | :----------:|
+| 5 | Less than 700 | Less than 5500 |
+| 4 | Less than 900 | Less than 7000 |
+| 3 | Less than 1100 | Less than 8500 |
+| 2 | Less than 1300 | Less than 10000 |
+| 1 | Less than 1500 | Less than 11500 |
+
+As can be seen from the tables, my algorithm is on average over 10 % more efficient than what is needed for full points in both cases. It can also be noted that there is not much variance in the move counts between runs, meaning the performance should be fairly consistent with most inputs given.
+
+
