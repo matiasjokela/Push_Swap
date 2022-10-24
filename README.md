@@ -64,6 +64,8 @@ Once again, sorting for small stacks works slightly differently to what is descr
 
 ![end](./examples/end.png)
 
+![large_stack](./examples/small_stack.gif)
+
 ![large_stack](./examples/large_stack.gif)
 
 
