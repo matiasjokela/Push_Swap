@@ -59,15 +59,17 @@ Once this setup is in place, all that is left to do is to push the numbers back 
 
 The algorithm works by finding the min and max values from stack b and calculating the shortest distance to both from the current position. It then chooses the one that is closer and starts rotating the stack towards it. As an added optimization, the second lowest and highest numbers are also recorded and they are pushed if they are found on the way to the lowest or highest number. If only the highest number was pushed, then nothing needs to be done to stack a at this point. Otherwise stack a is rotated or its first two values swapped so that the previously pushed highest number is on top and the numbers are in the correct order. This process is repeated until stack b is empty, after which stack a needs to be rotated until the smallest number is on top, and the sorting is done.
 
-Once again, sorting for small stacks works slightly differently to what is described above. For small stacks, it is sufficient to simply always push the highest number from stack b to stack a in each iteration. 
-
+For smaller stack sizes, too much complexity can be a bad idea, and simple algorithms often perform better. This is why with stacks of under 60 numbers, the min value is ignored and max value is pushed to stack a in each iteration. This way stack a does not need to be rotated after the last number from stack b is pushed because it will already be in the correct position.
 
 ![end](./examples/end.png)
 
+Below are visualisations of the algorithm in action for both a small stack (50 numbers) and a large stack (123 numbers). I did not write the visualiser used here, the one I used can be found [here](https://github.com/xbeheydt/push_swap_visualizer). Thanks to [xbeheydt](https://github.com/xbeheydt) for creating it!
+
+### Small stack visualisation
 ![small_stack](./examples/small_stack.gif)
 
+### Large stack visualisation
 ![large_stack](./examples/large_stack.gif)
-
 
 ## Conclusion
 
