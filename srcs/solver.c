@@ -31,9 +31,9 @@ void	solve_stacks(t_stack **a, t_stack **b, t_psdata *data)
 		return ;
 	}
 	if (data->stack_depth_a > 200)
-		data->seg_count = 32;
+		data->seg_count = 33;
 	else
-		data->seg_count = 12;
+		data->seg_count = 13;
 	get_segments(*a, data, data->seg_count);
 	push_segments(a, b, data);
 	sort_three(a, b, data);

@@ -62,9 +62,9 @@ The algorithm works by finding the min and max values from stack b and calculati
 Once again, sorting for small stacks works slightly differently to what is described above. For small stacks, it is sufficient to simply always push the highest number from stack b to stack a in each iteration. 
 
 
-
-
 ![end](./examples/end.png)
+
+<video src='./examples/large_stack.mov' width=180/>
 
 
 ## Conclusion
