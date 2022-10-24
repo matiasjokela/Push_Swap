@@ -63,6 +63,7 @@ For smaller stack sizes, too much complexity can be a bad idea, and simple algor
 
 ![end](./examples/end.png)
 
+
 Below are visualisations of the algorithm in action for both a small stack (50 numbers) and a large stack (123 numbers). I did not write the visualiser used here, the one I used can be found [here](https://github.com/xbeheydt/push_swap_visualizer). Thanks to [xbeheydt](https://github.com/xbeheydt) for creating it!
 
 ### Small stack visualisation
@@ -72,4 +73,19 @@ Below are visualisations of the algorithm in action for both a small stack (50 n
 ![large_stack](./examples/large_stack.gif)
 
 ## Conclusion
+
+This project is tested and scored based on its correctness (error handling etc.) and performance. My solution scores full marks both. Below is a comparison of performance against the scoring system for stacks of 100 random values and 500 random values.
+
+### Performance
+
+I ran five test for stacks of both 100 and 500 random numbers. Number sets were generated using [this](https://www.random.org/integer-sets/) tool. Result in the table below.
+
+| Run | Move count (100 numbers) | Move count (500 numbers)|
+| :------:| :----------:| | :----------:|
+| 1 | 621 | 4932 |
+| 2 | 604 | 4910 |
+| 3 | 560 | 4907 |
+| 4 | 636 | 4919 |
+| 5 | 623 | 4792 |
+| Average | 609 | 4892 |
 
