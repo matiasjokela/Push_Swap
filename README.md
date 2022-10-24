@@ -78,7 +78,7 @@ This project is tested and scored based on its correctness (error handling etc.)
 
 ### Performance
 
-I ran five test for stacks of both 100 and 500 random numbers. Number sets were generated using [this](https://www.random.org/integer-sets/) tool. Result in the table below.
+I ran five tests for stacks of both 100 and 500 random numbers. Number sets were generated using [this](https://www.random.org/integer-sets/) tool. Result in the table below.
 
 | Run | Move count (100 numbers) | Move count (500 numbers)|
 | :------:| :----------: | :----------:|
