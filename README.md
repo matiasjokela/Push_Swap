@@ -64,7 +64,7 @@ Once again, sorting for small stacks works slightly differently to what is descr
 
 ![end](./examples/end.png)
 
-<video src='./examples/large_stack.mov' width='180'>
+![large_stack](./examples/large_stack.gif)
 
 
 ## Conclusion
