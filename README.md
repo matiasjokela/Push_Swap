@@ -81,7 +81,7 @@ This project is tested and scored based on its correctness (error handling etc.)
 I ran five test for stacks of both 100 and 500 random numbers. Number sets were generated using [this](https://www.random.org/integer-sets/) tool. Result in the table below.
 
 | Run | Move count (100 numbers) | Move count (500 numbers)|
-| :------:| :----------:| | :----------:|
+| :------:| :----------: | :----------:|
 | 1 | 621 | 4932 |
 | 2 | 604 | 4910 |
 | 3 | 560 | 4907 |
